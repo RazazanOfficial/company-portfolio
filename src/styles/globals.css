@@ -1,41 +1,85 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+/* Tailwind v4 entry */
+@import "tailwindcss";
 
+:root {
+  /* Light palette (from your 2nd palette + accessibility tweaks) */
+  --bg: #f0f3f2;
+  --surface: #ffffff;
+  --border: #dde2e1;
+  --text: #1e1e22;
+  --text-muted: #5f6167;
 
+  /* Brand neutrals (chrome/metal vibe) */
+  --brand-900: #35333e;
+  --brand-800: #444a52;
+  --brand-500: #8c96a2;
 
-/* Resets */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+  /* Accent for links/CTAs */
+  --accent: #8ec5ff;
+  --accent-contrast: #0b1320;
 }
 
-html, body {
+:root[data-theme="dark"] {
+  /* Dark palette (from your 1st palette) */
+  --bg: #121316;
+  --surface: #1b1c21;
+  --border: #2b2c32;
+  --text: #e9eceb;
+  --text-muted: #b2b6bc;
+
+  --brand-900: #37353e;
+  --brand-800: #44444e;
+  --brand-500: #8c96a2;
+
+  --accent: #7ab8ff;
+  --accent-contrast: #08101d;
+}
+
+/* Map CSS variables to Tailwind color tokens via @theme (no tailwind.config.*) */
+@theme {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-border: var(--border);
+  --color-text: var(--text);
+  --color-text-muted: var(--text-muted);
+
+  --color-brand-900: var(--brand-900);
+  --color-brand-800: var(--brand-800);
+  --color-brand-500: var(--brand-500);
+
+  --color-accent: var(--accent);
+  --color-accent-contrast: var(--accent-contrast);
+}
+
+* {
+  transition: background-color 0.4s ease, color 0.4s ease,
+    border-color 0.4s ease;
+}
+
+html,
+body {
   width: 100%;
   max-width: 100%;
   overflow-x: hidden;
+  transition: background-color 0.4s ease, color 0.4s ease;
 }
 
-/* راست‌چین + فونت فارسی برای fa */
 html[lang="fa"] body {
   direction: rtl;
-  font-family: var(--font-fa), ui-sans-serif, system-ui, -apple-system, "Segoe UI",
-    Roboto, "Helvetica Neue", Arial;
+  font-family: var(--font-fa), ui-sans-serif, system-ui, -apple-system,
+    "Segoe UI", Roboto, "Helvetica Neue", Arial;
 }
-
-/* چپ‌چین + فونت انگلیسی برای en */
 html[lang="en"] body {
   direction: ltr;
-  font-family: var(--font-en), ui-sans-serif, system-ui, -apple-system, "Segoe UI",
-    Roboto, "Helvetica Neue", Arial;
+  font-family: var(--font-en), ui-sans-serif, system-ui, -apple-system,
+    "Segoe UI", Roboto, "Helvetica Neue", Arial;
 }
 
-/* رندر نرم‌تر + بک‌گراند + حداقل ارتفاع */
 body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #f1f5f9; /* معادل bg-slate-100 */
+  background: var(--bg);
+  color: var(--text);
   min-height: 100dvh;
-  text-align: start; /* در RTL راست و در LTR چپ */
+  text-align: start;
 }
