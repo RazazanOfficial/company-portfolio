@@ -1,5 +1,6 @@
 // components/Header.jsx
 import ThemeToggle from "@/components/ThemeToggle";
+import LanguageToggle from "@/components/LanguageToggle";
 
 /** Minimal header with theme-aware styling and a toggle */
 export default function Header() {
@@ -23,6 +24,9 @@ export default function Header() {
 
           {/* Theme switcher (client component) */}
           <ThemeToggle />
+
+          {/* Language switcher (client component) */}
+          <LanguageToggle />
         </div>
       </div>
     </header>

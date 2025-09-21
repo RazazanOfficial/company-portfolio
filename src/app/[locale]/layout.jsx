@@ -1,23 +1,22 @@
 // app/[locale]/layout.jsx
 import "@/styles/globals.css";
+import "@/styles/hamster.css"; // CSS فقط اینجا ایمپورت می‌شود تا دوباره‌کاری نشود
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages, unstable_setRequestLocale } from "next-intl/server";
 import { sora, vazir } from "./fonts";
+import LoadingOverlay from "@/components/LoadingOverlay";
 
-// اگر SSG لازم داری می‌تونی این رو نگه داری؛ در غیراینصورت می‌تونی حذفش کنی
 const LOCALES = ["en", "fa"];
 export function generateStaticParams() {
   return LOCALES.map((l) => ({ locale: l }));
 }
 
-// متادیتا دلخواه
 export const metadata = {
   title: "فروشگاه عصر دیجیتال",
   description: "سایت رسمی فروشگاه عصر دیجیتال",
   keywords: "فروشگاه, عصر دیجیتال, فروشگاه عصر دیجیتال"
 };
 
-// جلوگیری از فلاش تم قبل از هیدریشن
 const themeScript = `
 (function () {
   try {
@@ -31,10 +30,7 @@ const themeScript = `
 `;
 
 export default async function LocaleLayout({ children, params: { locale } }) {
-  // خیلی مهم: قبل از getMessages، locale جاری را به next-intl ست کن
   unstable_setRequestLocale(locale);
-
-  // صریحاً با locale بگیر تا اخطار نگیری
   const messages = await getMessages({ locale });
 
   return (
@@ -49,7 +45,12 @@ export default async function LocaleLayout({ children, params: { locale } }) {
       </head>
       <body className="antialiased">
         <NextIntlClientProvider locale={locale} messages={messages}>
-          {children}
+          {/* اوورلی لودینگ سراسری */}
+          <LoadingOverlay />
+          {/* ریشه‌ی محتوا؛ LoadingOverlay روی این عنصر aria-busy را مدیریت می‌کند */}
+          <main id="app-root" aria-busy="false">
+            {children}
+          </main>
         </NextIntlClientProvider>
       </body>
     </html>
