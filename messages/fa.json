@@ -1,5 +1,11 @@
 {
   "HomePage": {
     "title": "سلام"
+  },
+  "Header": {
+    "HomePage": "صفحه اصلی",
+    "Gallery": "گالری",
+    "AboutUs": "درباره ما",
+    "ContactUs": "تماس با ما"
   }
 }

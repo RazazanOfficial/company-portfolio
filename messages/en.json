@@ -1,5 +1,11 @@
 {
   "HomePage": {
     "title": "Hello world!"
+  },
+  "Header": {
+    "HomePage": "Home",
+    "Gallery": "Gallery",
+    "AboutUs": "About Us",
+    "ContactUs": "Contact Us"
   }
 }
