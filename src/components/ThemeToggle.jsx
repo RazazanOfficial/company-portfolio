@@ -6,7 +6,6 @@ export default function ThemeToggle({ className = "" }) {
   const { theme, toggle, mounted } = useTheme();
   const checked = theme === "dark";
 
-  // قبل از مونت: یه div خالی یا اسکلت نشون بده (تا mismatch نگیریم)
   if (!mounted) {
     return (
       <label

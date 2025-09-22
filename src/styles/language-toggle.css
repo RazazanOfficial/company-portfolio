@@ -1,6 +1,5 @@
 .ls-cb { opacity: 0; width: 0; height: 0; }
 
-
 /* 3D side faces for the tiles */
 .ls-left::before,
 .ls-left::after,
@@ -21,8 +20,6 @@ height: 100%;
 .ls-right::after { background-color: rgb(112, 112, 112); transform-origin: center bottom; transform: rotateX(90deg); }
 
 
-/* Checked state morphs */
-/* When input is checked, FA (right) comes forward; EN (left) rotates away */
 .ls-switch input:checked + .ls-toggle > .ls-left {
 transform: rotateX(10deg) rotateY(45deg);
 color: rgb(206, 206, 206);

@@ -1,24 +1,20 @@
-// app/[locale]/page.jsx
 "use client";
 
 import { useTranslations } from "next-intl";
 import Header from "@/components/Header";
 
-/** Client-side page using useTranslations + theme tokens and raw CSS variables */
 export default function Page() {
-  const t = useTranslations("HomePage"); // expects "HomePage.title", "HomePage.subtitle" in messages
+  const t = useTranslations("HomePage");
 
   return (
     <>
       <Header />
 
       <main className="mx-auto max-w-6xl px-4 py-8 space-y-8">
-        {/* i18n title/subtitle */}
         <header className="mb-4">
           <h1 className="text-2xl font-bold text-text">{t("title")}</h1>
         </header>
 
-        {/* Section using Tailwind tokens mapped via @theme */}
         <section>
           <h2 className="text-xl font-semibold text-text mb-4">
             Using Tailwind tokens (mapped from @theme)
@@ -61,7 +57,6 @@ export default function Page() {
           </div>
         </section>
 
-        {/* Section using raw CSS variables directly */}
         <section>
           <h2 className="text-xl font-semibold text-[var(--text)] mb-4">
             Using raw CSS variables (direct)

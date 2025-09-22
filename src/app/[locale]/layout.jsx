@@ -1,8 +1,7 @@
-// app/[locale]/layout.jsx
 import "@/styles/globals.css";
-import "@/styles/hamster.css"; // CSS فقط اینجا ایمپورت می‌شود تا دوباره‌کاری نشود
+import "@/styles/hamster.css";
 import { NextIntlClientProvider } from "next-intl";
-import { getMessages, unstable_setRequestLocale } from "next-intl/server";
+import { getMessages } from "next-intl/server";
 import { sora, vazir } from "./fonts";
 import LoadingOverlay from "@/components/LoadingOverlay";
 
@@ -30,7 +29,7 @@ const themeScript = `
 `;
 
 export default async function LocaleLayout({ children, params: { locale } }) {
-  unstable_setRequestLocale(locale);
+  // unstable_setRequestLocale(locale);
   const messages = await getMessages({ locale });
 
   return (
@@ -42,12 +41,13 @@ export default async function LocaleLayout({ children, params: { locale } }) {
     >
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+        <noscript>
+          <meta httpEquiv="refresh" content={`0; url=/${locale}/enable-js`} />
+        </noscript>
       </head>
       <body className="antialiased">
         <NextIntlClientProvider locale={locale} messages={messages}>
-          {/* اوورلی لودینگ سراسری */}
           <LoadingOverlay />
-          {/* ریشه‌ی محتوا؛ LoadingOverlay روی این عنصر aria-busy را مدیریت می‌کند */}
           <main id="app-root" aria-busy="false">
             {children}
           </main>

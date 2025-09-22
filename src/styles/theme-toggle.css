@@ -1,11 +1,9 @@
-/* Scoped to .theme-toggle */
 .theme-toggle input {
   opacity: 0;
   width: 0;
   height: 0;
 }
 
-/* Slider container */
 .theme-toggle .slider {
   position: absolute;
   cursor: pointer;
@@ -19,39 +17,33 @@
 
 .theme-toggle .slider.round { border-radius: 34px; }
 
-/* Sun/Moon knob */
 .theme-toggle .sun-moon {
   position: absolute;
   height: 26px;
   width: 26px;
   left: 4px;
   bottom: 4px;
-  background-color: #FFD54A; /* sun color in light mode */
-  /* از transform جمع‌وجور استفاده نکن؛ translate جدا باشد تا با rotate تداخل نکند */
+  background-color: #FFD54A;
   translate: 0 0;
   transition: translate 0.4s, background-color 0.4s;
   border-radius: 50%;
   will-change: translate, rotate;
 }
 
-/* Dark rail */
 .theme-toggle input:checked + .slider {
   background-color: var(--brand-900); /* dark rail */
 }
 
-/* Focus ring */
 .theme-toggle input:focus + .slider {
   box-shadow: 0 0 0 2px color-mix(in srgb, var(--accent) 50%, transparent);
 }
 
-/* Move knob + forward spin when entering dark (night) */
 .theme-toggle input:checked + .slider .sun-moon {
   translate: 26px 0;
   background-color: white;
   animation: spin-fwd 0.6s ease-in-out both;
 }
 
-/* Reverse spin when returning to light (day) */
 .theme-toggle input:not(:checked) + .slider .sun-moon {
   animation: spin-rev 0.6s ease-in-out both;
 }
@@ -65,7 +57,6 @@
   to   { rotate: -360deg; }
 }
 
-/* Moon craters */
 .theme-toggle .moon-dot {
   opacity: 0;
   transition: opacity 0.4s;
@@ -79,7 +70,6 @@
 .theme-toggle #moon-dot-2 { left: 2px;  top: 10px; width: 10px; height: 10px; }
 .theme-toggle #moon-dot-3 { left: 16px; top: 18px; width: 3px;  height: 3px;  }
 
-/* Sun rays (visible in light mode) */
 .theme-toggle .light-ray {
   position: absolute;
   z-index: -1;
@@ -90,7 +80,6 @@
 .theme-toggle #light-ray-2 { left: -50%; top: -50%; width: 55px; height: 55px; }
 .theme-toggle #light-ray-3 { left: -18px; top: -18px; width: 60px; height: 60px; }
 
-/* Clouds (ambient motion) */
 .theme-toggle .cloud-light,
 .theme-toggle .cloud-dark {
   position: absolute;
@@ -116,7 +105,6 @@
   100% { transform: translateX(0px); }
 }
 
-/* Stars (appear in dark mode) */
 .theme-toggle .stars {
   transform: translateY(-32px);
   opacity: 0;
