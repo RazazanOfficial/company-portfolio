@@ -1,42 +1,43 @@
 @import "tailwindcss";
 
+/* ====== Tokens ====== */
 :root {
-  /* Light palette (from your 2nd palette + accessibility tweaks) */
-  --bg: #f0f3f2;
-  --surface: #ffffff;
-  --border: #dde2e1;
-  --text: #1e1e22;
-  --text-muted: #5f6167;
+  /* Dark (تنها تم موجود) */
+  --bg: #0f1114;
+  --surface: #171a1f;
+  --border: #262b33;
+  --text: #eaecf0;
+  --text-muted: #a9afb8;
 
-  /* Brand neutrals (chrome/metal vibe) */
-  --brand-900: #35333e;
-  --brand-800: #444a52;
-  --brand-500: #8c96a2;
+  --brand-900: #16181d;
+  --brand-800: #1f232a;
+  --brand-500: #8f98a4;
 
-  /* Accent for links/CTAs */
-  --accent: #8ec5ff;
-  --accent-contrast: #0b1320;
+  /* Accents */
+  --accent-hot: #ff8247;  /* CTA */
+  --accent-cool: #7fb3ff; /* Links/hover */
+
+  /* Grid/Decor */
+  --grid-line: rgba(255,255,255,.10);
+  --grid-gap: 56px;
+
+  /* Hero soft glow (dark) */
+  --hero-glow: radial-gradient(
+    80% 60% at 50% -10%,
+    rgba(127,179,255,.20),
+    rgba(140,120,255,.12) 40%,
+    transparent 65%
+  );
+  --hero-arch: radial-gradient(
+    120% 80% at 50% 0%,
+    rgba(0,0,0,.40),
+    transparent 60%
+  );
 
   view-transition-name: root;
 }
 
-:root[data-theme="dark"] {
-  /* Dark palette (from your 1st palette) */
-  --bg: #121316;
-  --surface: #1b1c21;
-  --border: #2b2c32;
-  --text: #e9eceb;
-  --text-muted: #b2b6bc;
-
-  --brand-900: #37353e;
-  --brand-800: #44444e;
-  --brand-500: #8c96a2;
-
-  --accent: #7ab8ff;
-  --accent-contrast: #08101d;
-}
-
-/* Map CSS variables to Tailwind color tokens via @theme (no tailwind.config.*) */
+/* Tailwind mappings */
 @theme {
   --color-bg: var(--bg);
   --color-surface: var(--surface);
@@ -48,57 +49,155 @@
   --color-brand-800: var(--brand-800);
   --color-brand-500: var(--brand-500);
 
-  --color-accent: var(--accent);
-  --color-accent-contrast: var(--accent-contrast);
+  --color-accent-hot: var(--accent-hot);
+  --color-accent-cool: var(--accent-cool);
+
+  --color-grid-line: var(--grid-line);
 }
 
-::view-transition-old(root) {
+/* ====== Transitions / view transitions ====== */
+@theme inline {
+  --animate-cell-ripple: cell-ripple var(--duration, 200ms) ease-out none 1 var(--delay, 0ms);
+  @keyframes cell-ripple {
+    0% { opacity:.35 }
+    50% { opacity:.8 }
+    100% { opacity:.35 }
+  }
+}
+
+::view-transition-old(root){
   animation: locale-fade-out 180ms ease forwards;
 }
-
-::view-transition-new(root) {
+::view-transition-new(root){
   animation: locale-fade-in 220ms ease 60ms forwards;
 }
-
 @keyframes locale-fade-out {
-  from { opacity: 1; transform: none; }
-  to   { opacity: 0; transform: scale(.995); }
+  from { opacity:1; transform:none }
+  to   { opacity:0; transform:scale(.995) }
 }
-
 @keyframes locale-fade-in {
-  from { opacity: 0; transform: scale(.995); }
-  to   { opacity: 1; transform: none; }
+  from { opacity:0; transform:scale(.995) }
+  to   { opacity:1; transform:none }
 }
 
-* {
-  transition: background-color 0.4s ease, color 0.4s ease,
-    border-color 0.4s ease;
+/* ====== Base ====== */
+*{
+  transition: background-color .35s ease,
+              color .35s ease,
+              border-color .35s ease;
 }
-
-html,
+html, body {
+  width:100%;
+  max-width:100%;
+  overflow-x:hidden;
+}
+html[lang="fa"] body{
+  direction:rtl;
+  font-family:var(--font-fa), ui-sans-serif, system-ui, -apple-system,
+               "Segoe UI", Roboto, "Helvetica Neue", Arial;
+}
+html[lang="en"] body{
+  direction:ltr;
+  font-family:var(--font-en), ui-sans-serif, system-ui, -apple-system,
+               "Segoe UI", Roboto, "Helvetica Neue", Arial;
+}
 body {
-  width: 100%;
-  max-width: 100%;
-  overflow-x: hidden;
-  transition: background-color 0.4s ease, color 0.4s ease;
+  background:var(--bg);
+  color:var(--text);
+  min-height:100dvh;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
 }
 
-html[lang="fa"] body {
-  direction: rtl;
-  font-family: var(--font-fa), ui-sans-serif, system-ui, -apple-system,
-    "Segoe UI", Roboto, "Helvetica Neue", Arial;
-}
-html[lang="en"] body {
-  direction: ltr;
-  font-family: var(--font-en), ui-sans-serif, system-ui, -apple-system,
-    "Segoe UI", Roboto, "Helvetica Neue", Arial;
+/* ====== Utilities for the hero ====== */
+
+/* Glass card / nav */
+.glass {
+  background: color-mix(in oklab, var(--surface) 65%, transparent);
+  backdrop-filter: saturate(120%) blur(12px);
+  -webkit-backdrop-filter: saturate(120%) blur(12px);
 }
 
-body {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  background: var(--bg);
+/* Grid background */
+.bg-grid {
+  --gap: var(--grid-gap);
+  --line: 1px;
+  --c: var(--grid-line);
+  background-image:
+    linear-gradient(-90deg, transparent calc(var(--gap) - var(--line)),
+      var(--c) calc(var(--gap) - var(--line) + 1px), var(--c) var(--gap)),
+    linear-gradient(0deg, transparent calc(var(--gap) - var(--line)),
+      var(--c) calc(var(--gap) - var(--line) + 1px), var(--c) var(--gap));
+  background-size: var(--gap) var(--gap);
+}
+
+/* Soft glow + arch mask for hero top */
+.hero-glow { background: var(--hero-glow); }
+.hero-arch { mask-image: var(--hero-arch); -webkit-mask-image: var(--hero-arch); }
+
+/* CTA buttons */
+.btn-primary {
+  @apply inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-medium;
+  color: oklch(22% 0.03 264);
+  background: var(--accent-hot);
+  box-shadow: 0 8px 24px color-mix(in oklab, var(--accent-hot) 45%, transparent);
+}
+.btn-primary:hover {
+  filter: brightness(1.05);
+  transform: translateY(-1px);
+}
+.btn-secondary {
+  @apply inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-medium border;
+  border-color: color-mix(in oklab, var(--accent-cool) 35%, var(--border));
   color: var(--text);
-  min-height: 100dvh;
-  text-align: start;
+  background: color-mix(in oklab, var(--surface) 75%, transparent);
+}
+
+/* Small floating tags */
+.pill {
+  @apply rounded-full text-xs px-3 py-1 border;
+  background: color-mix(in oklab, var(--surface) 70%, transparent);
+  border-color: color-mix(in oklab, var(--brand-500) 40%, var(--border));
+
+  /* افکت Glow */
+  box-shadow:
+    0 0 8px color-mix(in oklab, var(--accent-cool) 50%, transparent),
+    0 0 16px color-mix(in oklab, var(--accent-cool) 30%, transparent);
+}
+.pill:hover {
+  box-shadow:
+    0 0 10px color-mix(in oklab, var(--accent-hot) 100%, transparent),
+    0 0 20px color-mix(in oklab, var(--accent-hot) 80%, transparent);
+}
+
+
+/* Fade bottom mask for fixed hero background */
+/* محو نرم انتهای بک‌دراپ (اختیاری ولی خوشگل‌ترش می‌کنه) */
+.mask-bottom-soft{
+  -webkit-mask-image: linear-gradient(to bottom, black 78%, transparent 100%);
+  mask-image: linear-gradient(to bottom, black 78%, transparent 100%);
+}
+
+/* نیم‌دایره با قطر در بالا؛ فقط داخل این شکل دیده می‌شه */
+.hero-arch-clip{
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 0;
+
+  /* سایز بزرگ مثل رفرنس */
+  width: 180vw;
+  height: clamp(420px, 60vh, 720px);
+
+  /* این دقیقا نیم‌دایره‌ایه که می‌خوای: کاسه رو به پایین و قطر در بالا */
+  clip-path: ellipse(50% 100% at 50% 0);
+
+  /* پر/هاله‌ی داخل نیم‌دایره (واضح و قابل دیدن) */
+  background:
+    linear-gradient(to bottom,
+      rgba(0,0,0,.42) 0%,
+      rgba(0,0,0,.28) 24%,
+      rgba(0,0,0,.14) 44%,
+      rgba(0,0,0,0) 68%
+    );
 }

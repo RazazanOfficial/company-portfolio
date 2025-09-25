@@ -58,7 +58,7 @@ export default function LanguageToggle({
 
   return (
     <label
-      className={`ls-switch relative inline-block w-[5em] h-[2.5em] select-none ${className}`}
+      className={`ls-switch relative inline-block w-[5em] h-[2.5em] select-none mr-[8vw] ${className}`}
       aria-label="Toggle language between English and Persian"
     >
       <input

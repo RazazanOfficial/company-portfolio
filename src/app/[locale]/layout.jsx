@@ -4,6 +4,7 @@ import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
 import { sora, vazir } from "./fonts";
 import LoadingOverlay from "@/components/LoadingOverlay";
+import Header from "@/components/Header";
 
 const LOCALES = ["en", "fa"];
 export function generateStaticParams() {
@@ -13,7 +14,7 @@ export function generateStaticParams() {
 export const metadata = {
   title: "فروشگاه عصر دیجیتال",
   description: "سایت رسمی فروشگاه عصر دیجیتال",
-  keywords: "فروشگاه, عصر دیجیتال, فروشگاه عصر دیجیتال"
+  keywords: "فروشگاه, عصر دیجیتال, فروشگاه عصر دیجیتال",
 };
 
 const themeScript = `
@@ -45,12 +46,17 @@ export default async function LocaleLayout({ children, params: { locale } }) {
           <meta httpEquiv="refresh" content={`0; url=/${locale}/enable-js`} />
         </noscript>
       </head>
-      <body className="antialiased">
+      <body className="antialiased min-h-screen">
         <NextIntlClientProvider locale={locale} messages={messages}>
           <LoadingOverlay />
-          <main id="app-root" aria-busy="false">
+          <section className="relative overflow-hidden">
+          {/* نکته: container حذف شد تا صفحات خودشان تصمیم بگیرند */}
+      <Header />
+
+          <main id="app-root" aria-busy="false" className="relative z-0">
             {children}
           </main>
+          </section>
         </NextIntlClientProvider>
       </body>
     </html>

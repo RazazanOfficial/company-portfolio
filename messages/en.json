@@ -1,11 +1,31 @@
 {
-  "HomePage": {
-    "title": "Hello world!"
-  },
   "Header": {
     "HomePage": "Home",
     "Gallery": "Gallery",
     "AboutUs": "About Us",
-    "ContactUs": "Contact Us"
+    "ContactUs": "Contact Us",
+    "GetStarted": "Get Started"
+  },
+  "HomePage": {
+    "headline": {
+      "l1": "A Technology Partner",
+      "l2": "Focused on Your Growth"
+    },
+    "subcopy": "From idea to implementation—web, mobile, and software solutions built fast, scalable, and tailored to your brand.",
+    "cta": {
+      "primary": "Start with us",
+      "secondary": "See our work"
+    },
+    "floatingTags": [
+      "Website Design",
+      "Web App Design",
+      "Mobile App",
+      "E-Commerce"
+    ],
+    "mock": { "alt": "Product showcase" },
+    "why": {
+      "title": "Why us?",
+      "desc": "Clear process, modern stack, and brand-first execution that keeps quality and speed in balance."
+    }
   }
 }
