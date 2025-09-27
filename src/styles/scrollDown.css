@@ -1,0 +1,30 @@
+/* styles/mouse-scroll.css */
+
+/* Glow عمومی برای اجزای ثابت (در صورت نیاز) */
+.glow-current { box-shadow: 0 0 8px currentColor; }
+
+/* --- حرکت هم‌زمان برای کل موس + متن --- */
+@keyframes mouse-float-y {
+  0%   { transform: translate3d(0, 0%, 0); }
+  50%  { transform: translate3d(0, 24%, 0); } /* شدت حرکت کلی موس؛ 24% → 30/36% برای بیشتر */
+  100% { transform: translate3d(0, 0%, 0); }
+}
+.mouse-float {
+  animation: mouse-float-y 2s ease-in-out infinite; /* زمان و ease مشترک با غلتک */
+  will-change: transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+/* --- غلتک داخل موس: هماهنگ با بالا --- */
+@keyframes scroll-nub {
+  0%   { transform: translate3d(0, 10%, 0); opacity: 0.95; }
+  50%  { transform: translate3d(0, 135%, 0); opacity: 0.65; } /* مسیر بلندتر ولی هم‌زمان */
+  100% { transform: translate3d(0, 10%, 0); opacity: 0.95; }
+}
+.scroll-nub-anim {
+  animation: scroll-nub 2s ease-in-out infinite; /* دقیقاً همان duration/ease */
+  will-change: transform, opacity;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
