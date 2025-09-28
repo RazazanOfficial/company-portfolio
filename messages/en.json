@@ -27,6 +27,23 @@
       "title": "Why us?",
       "desc": "Clear process, modern stack, and brand-first execution that keeps quality and speed in balance."
     },
-    "scroll": "Scroll Down"
+    "scroll": "Scroll Down",
+
+    "grid": {
+      "galleryTitle": "Gallery",
+      "galleryDesc": "See our latest works and case studies.",
+      "contactTitle": "Contact",
+      "contactDesc": "Reach out to us quickly and easily.",
+      "qualityTitle": "Premium Experience",
+      "qualityDesc": "Quality and satisfaction are our priorities.",
+      "aiTitle": "AI Content Generation",
+      "aiDesc": "Generate unique content powered by AI.",
+      "proofTitle": "Automated Proofreading",
+      "proofDesc": "Let AI proofread your documents.",
+      "designTitle": "Thoughtful Design",
+      "designDesc": "Functional design that looks great.",
+      "commTitle": "Clear Communication",
+      "commDesc": "We keep things transparent and simple."
+    }
   }
 }
