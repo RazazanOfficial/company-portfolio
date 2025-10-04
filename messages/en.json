@@ -22,13 +22,14 @@
       "Mobile App",
       "E-Commerce"
     ],
-    "mock": { "alt": "Product showcase" },
+    "mock": {
+      "alt": "Product showcase"
+    },
     "why": {
       "title": "Why us?",
       "desc": "Clear process, modern stack, and brand-first execution that keeps quality and speed in balance."
     },
     "scroll": "Scroll Down",
-
     "grid": {
       "galleryTitle": "Gallery",
       "galleryDesc": "See our latest works and case studies.",
@@ -44,6 +45,136 @@
       "designDesc": "Functional design that looks great.",
       "commTitle": "Clear Communication",
       "commDesc": "We keep things transparent and simple."
+    },
+    "sections": {
+      "features": {
+        "title": "What we do",
+        "link": "About our studio"
+      },
+      "trust": {
+        "text": "Trusted by ambitious startups & bold brands"
+      },
+      "services": {
+        "title": "Services",
+        "pill": "End‑to‑end branding"
+      },
+      "process": {
+        "title": "Our process",
+        "time": "2–6 weeks typical"
+      },
+      "stats": {
+        "title": "Impact"
+      },
+      "featured": {
+        "pill": "Case study",
+        "title": "From zero to category‑leader in 7 weeks",
+        "desc": "Brand repositioning, identity and conversion‑first website for a SaaS startup.",
+        "view": "View project",
+        "talk": "Start a project"
+      },
+      "testimonials": {
+        "title": "Kind words",
+        "hint": "Swipe →"
+      },
+      "faq": {
+        "title": "FAQ"
+      },
+      "cta": {
+        "pill": "Let’s talk",
+        "title": "Ready to grow your brand?",
+        "desc": "Tell us about your goals — we’ll reply within 24 hours."
+      }
+    },
+    "services": {
+      "strategy": {
+        "title": "Brand Strategy",
+        "desc": "Positioning, voice, audience research and a crisp narrative for your brand."
+      },
+      "identity": {
+        "title": "Visual Identity",
+        "desc": "Logo, typography, color system, motion & design tokens that scale."
+      },
+      "web": {
+        "title": "Web Design & Dev",
+        "desc": "Next.js websites, landing pages, and high‑performance marketing sites."
+      },
+      "content": {
+        "title": "Content & Social",
+        "desc": "Art‑direction for social, templates, content calendars and AI‑assisted copy."
+      },
+      "case": {
+        "title": "Case Studies",
+        "desc": "Story‑driven showcases that highlight outcomes, not just deliverables."
+      },
+      "support": {
+        "title": "Ongoing Support",
+        "desc": "Retainers for growth, iteration and rapid experiments."
+      }
+    },
+    "process": {
+      "discovery": {
+        "title": "Discovery",
+        "desc": "A short workshop to align on goals and constraints."
+      },
+      "strategy": {
+        "title": "Strategy",
+        "desc": "Positioning, messaging and creative north‑star."
+      },
+      "design": {
+        "title": "Design",
+        "desc": "Identity, system, key screens and motion samples."
+      },
+      "iterate": {
+        "title": "Iterate",
+        "desc": "Tight feedback loops, then polish and QA."
+      },
+      "launch": {
+        "title": "Launch",
+        "desc": "Handover, docs and a crisp launch plan."
+      }
+    },
+    "stats": {
+      "projects": "Projects",
+      "cvrs": "Avg. lift",
+      "sectors": "Sectors"
+    },
+    "testimonials": {
+      "1": {
+        "quote": "They captured our essence fast and shipped a site that converts.",
+        "name": "Sahar • Nova"
+      },
+      "2": {
+        "quote": "A rare combo of taste, speed and business understanding.",
+        "name": "Arman • Vertex"
+      },
+      "3": {
+        "quote": "The design system made our product UI consistent overnight.",
+        "name": "Neda • Helix"
+      }
+    },
+    "faq": {
+      "1": {
+        "q": "What do projects cost?",
+        "a": "We scope transparently. Most engagements land between $3–12k depending on scope."
+      },
+      "2": {
+        "q": "Do you work fast?",
+        "a": "Yes. We compress timelines when needed and keep feedback cycles tight."
+      },
+      "3": {
+        "q": "Can you migrate our old site?",
+        "a": "Absolutely. We handle content migration, redirects and SEO hygiene."
+      }
+    },
+    "footer": {
+      "rights": "All rights reserved"
+    },
+    "Header": {
+      "HomePage": "Home",
+      "Gallery": "Gallery",
+      "AboutUs": "About Us",
+      "ContactUs": "Contact Us",
+      "GetStarted": "Get Started"
     }
   }
 }
