@@ -3,8 +3,7 @@
     "HomePage": "Home",
     "Gallery": "Gallery",
     "AboutUs": "About Us",
-    "ContactUs": "Contact Us",
-    "GetStarted": "Get Started"
+    "ContactUs": "Contact Us"
   },
   "HomePage": {
     "headline": {
@@ -16,35 +15,23 @@
       "primary": "Start with us",
       "secondary": "See our work"
     },
-    "floatingTags": [
-      "Website Design",
-      "Web App Design",
-      "Mobile App",
-      "E-Commerce"
-    ],
-    "mock": {
-      "alt": "Product showcase"
-    },
-    "why": {
-      "title": "Why us?",
-      "desc": "Clear process, modern stack, and brand-first execution that keeps quality and speed in balance."
-    },
+
     "scroll": "Scroll Down",
     "grid": {
-      "galleryTitle": "Gallery",
-      "galleryDesc": "See our latest works and case studies.",
-      "contactTitle": "Contact",
-      "contactDesc": "Reach out to us quickly and easily.",
-      "qualityTitle": "Premium Experience",
-      "qualityDesc": "Quality and satisfaction are our priorities.",
-      "aiTitle": "AI Content Generation",
-      "aiDesc": "Generate unique content powered by AI.",
-      "proofTitle": "Automated Proofreading",
-      "proofDesc": "Let AI proofread your documents.",
-      "designTitle": "Thoughtful Design",
-      "designDesc": "Functional design that looks great.",
-      "commTitle": "Clear Communication",
-      "commDesc": "We keep things transparent and simple."
+      "gridTitle1": "Gallery",
+      "gridDesc1": "See our latest works and case studies.",
+      "gridTitle2": "Contact",
+      "gridDesc2": "Reach out to us quickly and easily.",
+      "gridTitle3": "Premium Experience",
+      "gridDesc3": "Quality and satisfaction are our priorities.",
+      "gridTitle4": "AI Content Generation",
+      "gridDesc4": "Generate unique content powered by AI.",
+      "gridTitle5": "Automated Proofreading",
+      "gridDesc5": "Let AI proofread your documents.",
+      "gridTitle6": "Thoughtful Design",
+      "gridDesc6": "Functional design that looks great.",
+      "gridTitle7": "Clear Communication",
+      "gridDesc7": "We keep things transparent and simple."
     },
     "sections": {
       "features": {

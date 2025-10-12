@@ -30,40 +30,53 @@ export default function Page() {
   const t = useTranslations("HomePage");
 
   // --- Small building blocks ---
-  const SoftSkeleton = ({ variant = "grid" }) => {
-    if (variant === "gradient") {
-      return (
+  // GridSlot: همان باکس گرادیان قبلی، ولی حالا می‌توانید هر نوع محتوایی داخلش رندر کنید
+  const GridSlot = ({ children, className = "" }) => {
+    return (
+      <div className={`relative flex flex-1 h-full min-h-[6rem] w-full rounded-xl overflow-hidden ${className}`}>
         <div
-          className="flex flex-1 h-full min-h-[6rem] w-full rounded-xl"
+          className="absolute inset-0"
           style={{
             background:
               "linear-gradient(-45deg, rgba(127,179,255,.18), rgba(140,120,255,.12), transparent)",
           }}
         />
-      );
-    }
-    return (
-      <div className="flex flex-1 h-full min-h-[6rem] w-full rounded-xl bg-grid [mask-image:radial-gradient(ellipse_at_center,white,transparent)]" />
+        <div className="relative flex w-full h-full items-center justify-center p-3">
+          {children}
+        </div>
+      </div>
     );
   };
 
   const items = [
     {
-      title: t("grid.galleryTitle", { default: "Gallery" }),
-      description: t("grid.galleryDesc", {
-        default: "See our latest works and case studies.",
-      }),
-      header: <SoftSkeleton />,
+      title: t("grid.gridTitle1"),
+      description: t("grid.gridDesc1"),
+      // نمونه: تصویر داخل اسلات
+      header: (
+        <GridSlot>
+          <img
+            src="/images/sample-1.jpg"
+            alt="sample"
+            className="h-28 w-full object-cover rounded-md"
+          />
+        </GridSlot>
+      ),
       icon: <Images className="h-4 w-4 text-[var(--color-text-muted)]" />,
       className: "",
       href: `/${locale}/gallery`,
     },
     {
-      title: t("grid.contactTitle", { default: "Contact" }),
-      description: t("grid.contactDesc", {
-        default: "Reach out to us quickly and easily.",
-      }),
-      header: <SoftSkeleton variant="gradient" />,
+      title: t("grid.gridTitle2"),
+      description: t("grid.gridDesc2"),
+      // نمونه: متن سفارشی
+      header: (
+        <GridSlot>
+          <p className="text-sm text-center leading-6">
+            سلام
+          </p>
+        </GridSlot>
+      ),
       icon: (
         <MessageSquare className="h-4 w-4 text-[var(--color-text-muted)]" />
       ),
@@ -71,49 +84,57 @@ export default function Page() {
       href: `/${locale}/contact`,
     },
     {
-      title: t("grid.qualityTitle", { default: "Premium Experience" }),
-      description: t("grid.qualityDesc", {
-        default: "Quality and satisfaction are our priorities.",
-      }),
-      header: <SoftSkeleton />,
+      title: t("grid.gridTitle3"),
+      description: t("grid.gridDesc3"),
+      // نمونه: اینپوت / فرم کوچک
+      header: (
+        <GridSlot>
+          <form
+            onSubmit={(e) => e.preventDefault()}
+            className="w-full max-w-xs flex items-center gap-2"
+          >
+            <input
+              type="email"
+              placeholder={"چخبر"}
+              className="flex-1 rounded-md border px-3 py-2 bg-[color-mix(in_oklab,var(--color-surface)_70%,transparent)] outline-none focus:ring-2 focus:ring-[var(--color-accent-cool)]"
+            />
+            <button className="btn-primary whitespace-nowrap text-sm px-3">
+              واقعا؟!
+            </button>
+          </form>
+        </GridSlot>
+      ),
       icon: <Stars className="h-4 w-4 text-[var(--color-text-muted)]" />,
       className: "",
     },
     {
-      title: t("grid.aiTitle", { default: "AI Content Generation" }),
-      description: t("grid.aiDesc", {
-        default: "Generate unique content powered by AI.",
-      }),
-      header: <SoftSkeleton variant="gradient" />,
+      title: t("grid.gridTitle4"),
+      description: t("grid.gridDesc4"),
+      // نمونه: حالت پیش‌فرض بدون محتوای خاص
+      header: <GridSlot />,
       icon: (
         <ClipboardCopy className="h-4 w-4 text-[var(--color-text-muted)]" />
       ),
       className: "md:col-span-2",
     },
     {
-      title: t("grid.proofTitle", { default: "Automated Proofreading" }),
-      description: t("grid.proofDesc", {
-        default: "Let AI proofread your documents.",
-      }),
-      header: <SoftSkeleton />,
+      title: t("grid.gridTitle5"),
+      description: t("grid.gridDesc5"),
+      header: <GridSlot />,
       icon: <FileWarning className="h-4 w-4 text-[var(--color-text-muted)]" />,
       className: "",
     },
     {
-      title: t("grid.designTitle", { default: "Thoughtful Design" }),
-      description: t("grid.designDesc", {
-        default: "Functional design that looks great.",
-      }),
-      header: <SoftSkeleton />,
+      title: t("grid.gridTitle6"),
+      description: t("grid.gridDesc6"),
+      header: <GridSlot />,
       icon: <Signature className="h-4 w-4 text-[var(--color-text-muted)]" />,
       className: "",
     },
     {
-      title: t("grid.commTitle", { default: "Clear Communication" }),
-      description: t("grid.commDesc", {
-        default: "We keep things transparent and simple.",
-      }),
-      header: <SoftSkeleton variant="gradient" />,
+      title: t("grid.gridTitle7"),
+      description: t("grid.gridDesc7"),
+      header: <GridSlot />,
       icon: <Columns3 className="h-4 w-4 text-[var(--color-text-muted)]" />,
       className: "md:col-span-2",
     },
@@ -132,12 +153,12 @@ export default function Page() {
       {/* HERO CONTENT */}
       <section className="relative z-20">
         <div className="flex flex-col justify-center mx-auto px-4 pt-2 pb-24">
-          <header className="text-center max-w-3xl mx-auto">
-            <h1 className="text-xl sm:text-5xl md:text-6xl font-extrabold tracking-tight">
+          <div className="text-center max-w-3xl mx-auto mt-30 lg:mt-1 sm:mt-5 text-2xl xl:text-5xl lg:text-4xl md:text-4xl sm:text-3xl">
+            <h1 className="font-extrabold tracking-tight">
               <span className="block">{t("headline.l1")}</span>
               <span className="block">{t("headline.l2")}</span>
             </h1>
-            <p className="mt-2 text-text-muted text-base sm:text-lg">
+            <p className="text-text-muted text-sm xl:text-lg lg:text-md md:text-base sm:text-sm lg:mt-3 md:mt-22 sm:mt-14">
               {t("subcopy")}
             </p>
             <div className="mt-4 flex items-center justify-center gap-3">
@@ -148,10 +169,10 @@ export default function Page() {
                 {t("cta.secondary")}
               </Link>
             </div>
-          </header>
+          </div>
 
           <div className="w-full flex justify-center mt-6">
-            <ScrollDown
+            <ScrollDown className="cursor-pointer"
               colorClass="text-[var(--color-brand-500)]"
               label={t("scroll")}
               onClick={onScrollDown}
@@ -165,18 +186,17 @@ export default function Page() {
         <div className="mx-auto w-full max-w-6xl px-4">
           <div className="flex items-end justify-between mb-6">
             <h2 className="text-2xl sm:text-3xl font-bold">
-              {t("sections.features.title", { default: "What we do" })}
+              {t("sections.features.title")}
             </h2>
             <Link
               href={`/${locale}/about`}
               className="text-sm text-[var(--color-accent-cool)] hover:underline inline-flex items-center gap-1"
             >
-              {t("sections.features.link", { default: "About our studio" })}
+              {t("sections.features.link")}
               <ArrowRight className="h-4 w-4" />
             </Link>
           </div>
 
-          {/* If you have BentoGrid, great; if not, replace with a simple grid */}
           <BentoGrid className="grid mt-3 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
             {items.map((item, i) => (
               <BentoGridItem key={i} {...item}>
@@ -199,9 +219,7 @@ export default function Page() {
         <div className="max-w-6xl mx-auto px-4">
           <div className="rounded-2xl border glass p-4">
             <p className="text-center text-sm text-text-muted mb-4">
-              {t("sections.trust.text", {
-                default: "Trusted by ambitious startups & bold brands",
-              })}
+              {t("sections.trust.text")}
             </p>
             <div className="overflow-hidden relative">
               <div className="flex gap-10 whitespace-nowrap marquee-track">
@@ -247,10 +265,16 @@ export default function Page() {
 
         {/* marquee keyframes */}
         <style jsx>{`
-          .marquee-track { animation: marquee 28s linear infinite; }
+          .marquee-track {
+            animation: marquee 28s linear infinite;
+          }
           @keyframes marquee {
-            from { transform: translateX(0); }
-            to   { transform: translateX(-50%); }
+            from {
+              transform: translateX(0);
+            }
+            to {
+              transform: translateX(-50%);
+            }
           }
         `}</style>
       </section>
@@ -260,61 +284,42 @@ export default function Page() {
         <div className="max-w-6xl mx-auto px-4">
           <div className="flex items-end justify-between mb-6">
             <h2 className="text-2xl sm:text-3xl font-bold">
-              {t("sections.services.title", { default: "Services" })}
+              {t("sections.services.title")}
             </h2>
-            <span className="pill">
-              {t("sections.services.pill", { default: "End‑to‑end branding" })}
-            </span>
+            <span className="pill">{t("sections.services.pill")}</span>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             <ServiceCard
               icon={<PenTool className="h-5 w-5" />}
-              title={t("services.strategy.title", { default: "Brand Strategy" })}
-              desc={t("services.strategy.desc", {
-                default:
-                  "Positioning, voice, audience research and a crisp narrative for your brand.",
-              })}
+              title={t("services.strategy.title")}
+              desc={t("services.strategy.desc")}
             />
             <ServiceCard
               icon={<Layers className="h-5 w-5" />}
-              title={t("services.identity.title", { default: "Visual Identity" })}
-              desc={t("services.identity.desc", {
-                default:
-                  "Logo, typography, color system, motion & design tokens that scale.",
-              })}
+              title={t("services.identity.title")}
+              desc={t("services.identity.desc")}
             />
             <ServiceCard
               icon={<Rocket className="h-5 w-5" />}
-              title={t("services.web.title", { default: "Web Design & Dev" })}
-              desc={t("services.web.desc", {
-                default:
-                  "Next.js websites, landing pages, and high‑performance marketing sites.",
-              })}
+              title={t("services.web.title")}
+              desc={t("services.web.desc")}
             />
             <ServiceCard
               icon={<Sparkles className="h-5 w-5" />}
-              title={t("services.content.title", { default: "Content & Social" })}
-              desc={t("services.content.desc", {
-                default:
-                  "Art‑direction for social, templates, content calendars and AI‑assisted copy.",
-              })}
+              title={t("services.content.title")}
+              desc={t("services.content.desc")}
             />
             <ServiceCard
               icon={<Images className="h-5 w-5" />}
-              title={t("services.case.title", { default: "Case Studies" })}
-              desc={t("services.case.desc", {
-                default:
-                  "Story‑driven showcases that highlight outcomes, not just deliverables.",
-              })}
+              title={t("services.case.title")}
+              desc={t("services.case.desc")}
               href={`/${locale}/gallery`}
             />
             <ServiceCard
               icon={<MessageSquare className="h-5 w-5" />}
-              title={t("services.support.title", { default: "Ongoing Support" })}
-              desc={t("services.support.desc", {
-                default: "Retainers for growth, iteration and rapid experiments.",
-              })}
+              title={t("services.support.title")}
+              desc={t("services.support.desc")}
               href={`/${locale}/contact`}
             />
           </div>
@@ -326,44 +331,34 @@ export default function Page() {
         <div className="max-w-6xl mx-auto px-4">
           <div className="flex items-end justify-between mb-6">
             <h2 className="text-2xl sm:text-3xl font-bold">
-              {t("sections.process.title", { default: "Our process" })}
+              {t("sections.process.title")}
             </h2>
             <span className="text-sm text-text-muted">
-              {t("sections.process.time", { default: "2–6 weeks typical" })}
+              {t("sections.process.time")}
             </span>
           </div>
 
           <ol className="relative border-s border-[var(--color-border)] ps-6">
             {[
               {
-                title: t("process.discovery.title", { default: "Discovery" }),
-                desc: t("process.discovery.desc", {
-                  default: "A short workshop to align on goals and constraints.",
-                }),
+                title: t("process.discovery.title"),
+                desc: t("process.discovery.desc"),
               },
               {
-                title: t("process.strategy.title", { default: "Strategy" }),
-                desc: t("process.strategy.desc", {
-                  default: "Positioning, messaging and creative north‑star.",
-                }),
+                title: t("process.strategy.title"),
+                desc: t("process.strategy.desc"),
               },
               {
-                title: t("process.design.title", { default: "Design" }),
-                desc: t("process.design.desc", {
-                  default: "Identity, system, key screens and motion samples.",
-                }),
+                title: t("process.design.title"),
+                desc: t("process.design.desc"),
               },
               {
-                title: t("process.iterate.title", { default: "Iterate" }),
-                desc: t("process.iterate.desc", {
-                  default: "Tight feedback loops, then polish and QA.",
-                }),
+                title: t("process.iterate.title"),
+                desc: t("process.iterate.desc"),
               },
               {
-                title: t("process.launch.title", { default: "Launch" }),
-                desc: t("process.launch.desc", {
-                  default: "Handover, docs and a crisp launch plan.",
-                }),
+                title: t("process.launch.title"),
+                desc: t("process.launch.desc"),
               },
             ].map((s, i) => (
               <li key={i} className="mb-8 ms-2">
@@ -385,40 +380,27 @@ export default function Page() {
           <div className="rounded-2xl border glass p-6 flex flex-col justify-center gap-4">
             <div className="flex items-center gap-3">
               <Trophy className="h-6 w-6" />
-              <h3 className="font-semibold">
-                {t("sections.stats.title", { default: "Impact" })}
-              </h3>
+              <h3 className="font-semibold">{t("sections.stats.title")}</h3>
             </div>
             <dl className="grid grid-cols-3 gap-3">
-              <Stat num="120+" label={t("stats.projects", { default: "Projects" })} />
-              <Stat num="36%" label={t("stats.cvrs", { default: "Avg. lift" })} />
-              <Stat num="14" label={t("stats.sectors", { default: "Sectors" })} />
+              <Stat num="120+" label={t("stats.projects")} />
+              <Stat num="36%" label={t("stats.cvrs")} />
+              <Stat num="14" label={t("stats.sectors")} />
             </dl>
           </div>
 
           {/* Featured case */}
           <div className="md:col-span-2 rounded-2xl border glass p-6 flex items-center gap-6">
             <div className="grow">
-              <p className="pill inline-block mb-3">
-                {t("sections.featured.pill", { default: "Case study" })}
-              </p>
-              <h3 className="text-xl font-semibold mb-2">
-                {t("sections.featured.title", {
-                  default: "From zero to category‑leader in 7 weeks",
-                })}
-              </h3>
-              <p className="text-sm text-text-muted">
-                {t("sections.featured.desc", {
-                  default:
-                    "Brand repositioning, identity and conversion‑first website for a SaaS startup.",
-                })}
-              </p>
+              <p className="pill inline-block mb-3">{t("sections.featured.pill")}</p>
+              <h3 className="text-xl font-semibold mb-2">{t("sections.featured.title")}</h3>
+              <p className="text-sm text-text-muted">{t("sections.featured.desc")}</p>
               <div className="mt-4 flex gap-2">
                 <Link href={`/${locale}/gallery`} className="btn-secondary">
-                  {t("sections.featured.view", { default: "View project" })}
+                  {t("sections.featured.view")}
                 </Link>
                 <Link href={`/${locale}/contact`} className="btn-primary">
-                  {t("sections.featured.talk", { default: "Start a project" })}
+                  {t("sections.featured.talk")}
                 </Link>
               </div>
             </div>
@@ -432,35 +414,26 @@ export default function Page() {
         <div className="max-w-6xl mx-auto px-4">
           <div className="flex items-end justify-between mb-6">
             <h2 className="text-2xl sm:text-3xl font-bold">
-              {t("sections.testimonials.title", { default: "Kind words" })}
+              {t("sections.testimonials.title")}
             </h2>
             <span className="text-sm text-text-muted">
-              {t("sections.testimonials.hint", { default: "Swipe →" })}
+              {t("sections.testimonials.hint")}
             </span>
           </div>
 
           <div className="snap-x snap-mandatory overflow-x-auto flex gap-4 pb-2 -mx-4 px-4">
             {[
               {
-                quote: t("testimonials.1.quote", {
-                  default:
-                    "They captured our essence fast and shipped a site that converts.",
-                }),
-                name: t("testimonials.1.name", { default: "Sahar • Nova" }),
+                quote: t("testimonials.1.quote"),
+                name: t("testimonials.1.name"),
               },
               {
-                quote: t("testimonials.2.quote", {
-                  default:
-                    "A rare combo of taste, speed and business understanding.",
-                }),
-                name: t("testimonials.2.name", { default: "Arman • Vertex" }),
+                quote: t("testimonials.2.quote"),
+                name: t("testimonials.2.name"),
               },
               {
-                quote: t("testimonials.3.quote", {
-                  default:
-                    "The design system made our product UI consistent overnight.",
-                }),
-                name: t("testimonials.3.name", { default: "Neda • Helix" }),
+                quote: t("testimonials.3.quote"),
+                name: t("testimonials.3.name"),
               },
             ].map((tst, i) => (
               <figure
@@ -468,9 +441,7 @@ export default function Page() {
                 className="snap-start min-w-[82%] sm:min-w-[520px] rounded-2xl border glass p-6"
               >
                 <Quote className="h-6 w-6 opacity-70" />
-                <blockquote className="mt-3 text-base leading-7">
-                  “{tst.quote}”
-                </blockquote>
+                <blockquote className="mt-3 text-base leading-7">“{tst.quote}”</blockquote>
                 <figcaption className="mt-3 text-sm text-text-muted">
                   {tst.name}
                 </figcaption>
@@ -484,31 +455,13 @@ export default function Page() {
       <section className="relative z-10 py-12">
         <div className="max-w-4xl mx-auto px-4">
           <h2 className="text-2xl sm:text-3xl font-bold mb-6">
-            {t("sections.faq.title", { default: "FAQ" })}
+            {t("sections.faq.title")}
           </h2>
           <div className="space-y-3">
             {[
-              {
-                q: t("faq.1.q", { default: "What do projects cost?" }),
-                a: t("faq.1.a", {
-                  default:
-                    "We scope transparently. Most engagements land between $3–12k depending on scope.",
-                }),
-              },
-              {
-                q: t("faq.2.q", { default: "Do you work fast?" }),
-                a: t("faq.2.a", {
-                  default:
-                    "Yes. We compress timelines when needed and keep feedback cycles tight.",
-                }),
-              },
-              {
-                q: t("faq.3.q", { default: "Can you migrate our old site?" }),
-                a: t("faq.3.a", {
-                  default:
-                    "Absolutely. We handle content migration, redirects and SEO hygiene.",
-                }),
-              },
+              { q: t("faq.1.q"), a: t("faq.1.a") },
+              { q: t("faq.2.q"), a: t("faq.2.a") },
+              { q: t("faq.3.q"), a: t("faq.3.a") },
             ].map((f, i) => (
               <details key={i} className="group rounded-2xl border glass p-5">
                 <summary className="flex cursor-pointer items-center justify-between list-none">
@@ -525,25 +478,15 @@ export default function Page() {
       {/* FINAL CTA */}
       <section className="relative z-10 py-16">
         <div className="max-w-5xl mx-auto px-4 text-center rounded-3xl border glass p-10">
-          <p className="pill inline-block mb-3">
-            {t("sections.cta.pill", { default: "Let’s talk" })}
-          </p>
-          <h3 className="text-2xl sm:text-3xl font-bold">
-            {t("sections.cta.title", {
-              default: "Ready to grow your brand?",
-            })}
-          </h3>
-          <p className="mt-2 text-text-muted">
-            {t("sections.cta.desc", {
-              default: "Tell us about your goals — we’ll reply within 24 hours.",
-            })}
-          </p>
+          <p className="pill inline-block mb-3">{t("sections.cta.pill")}</p>
+          <h3 className="text-2xl sm:text-3xl font-bold">{t("sections.cta.title")}</h3>
+          <p className="mt-2 text-text-muted">{t("sections.cta.desc")}</p>
           <div className="mt-6 flex items-center justify-center gap-3">
             <Link href={`/${locale}/contact`} className="btn-primary">
-              {t("cta.primary", { default: "Start a project" })}
+              {t("cta.primary")}
             </Link>
             <Link href={`/${locale}/about`} className="btn-secondary">
-              {t("cta.secondary", { default: "Learn more" })}
+              {t("cta.secondary")}
             </Link>
           </div>
         </div>
@@ -553,20 +496,20 @@ export default function Page() {
       <footer className="relative z-10 py-10">
         <div className="max-w-6xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-[var(--color-border)] pt-6">
           <span className="text-sm text-text-muted">
-            © {new Date().getFullYear()} — {t("footer.rights", { default: "All rights reserved" })}
+            © {new Date().getFullYear()} — {t("footer.rights")}
           </span>
           <nav className="flex flex-wrap items-center gap-3 text-sm">
             <Link href={`/${locale}`} className="hover:underline">
-              {t("Header.HomePage", { default: "Home" })}
+              {t("Header.HomePage")}
             </Link>
             <Link href={`/${locale}/gallery`} className="hover:underline">
-              {t("Header.Gallery", { default: "Gallery" })}
+              {t("Header.Gallery")}
             </Link>
             <Link href={`/${locale}/about`} className="hover:underline">
-              {t("Header.AboutUs", { default: "About" })}
+              {t("Header.AboutUs")}
             </Link>
             <Link href={`/${locale}/contact`} className="hover:underline">
-              {t("Header.ContactUs", { default: "Contact" })}
+              {t("Header.ContactUs")}
             </Link>
           </nav>
         </div>

@@ -3,6 +3,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useLocale, useTranslations } from "next-intl";
 import LanguageToggle from "@/components/LanguageToggle";
+
 export default function Header() {
   const t = useTranslations("Header");
   const locale = useLocale();
@@ -23,38 +24,81 @@ export default function Header() {
   };
 
   return (
-    <header className="relative z-20 px-4 pt-6 flex items-center justify-around gap-3">
-      <LanguageToggle />
-      <nav className="rounded-full border border-brand-800/50 glass">
-        <ul className="flex gap-1.5 py-1.5 px-1.5">
-          {links.map(({ label, slug }) => {
-            const active = isActive(slug);
-            const href = slug === "/" ? `/${locale}` : `/${locale}${slug}`;
-            return (
-              <li key={slug}>
-                <Link
-                  href={href}
-                  aria-current={active ? "page" : undefined}
-                  className={[
-                    "block rounded-3xl px-4 py-2 text-sm leading-6 transition-all border",
-                    "focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500/60",
-                    active
-                      ? "bg-surface/100 border-brand-500/40 shadow-sm"
-                      : "border-0 hover:border hover:border-brand-500/40 hover:bg-surface/80",
-                  ].join(" ")}
-                >
-                  {label}
-                </Link>
-              </li>
-            );
-          })}
-        </ul>
-      </nav>
-      <img
-        width="12%"
-        src="/pics/full_text_logo.png"
-        className="bg-[#ffbdbd17] py-1 px-1 rounded-md"
-      />
-    </header>
+    <>
+      {/* نسخه‌ی دسکتاپ و تبلت */}
+      <header className="hidden sm:flex relative z-20 items-center sm:justify-evenly justify-center pt-3 md:px-4 md:pt-6 sm:pt-4 gap-5 sm:gap-0 md:gap-3">
+        <LanguageToggle />
+        <nav className="rounded-full border border-brand-800/50 glass">
+          <ul className="flex gap-1.5 py-1.5 px-1.5">
+            {links.map(({ label, slug }) => {
+              const active = isActive(slug);
+              const href = slug === "/" ? `/${locale}` : `/${locale}${slug}`;
+              return (
+                <li key={slug}>
+                  <Link
+                    href={href}
+                    aria-current={active ? "page" : undefined}
+                    className={[
+                      "block rounded-3xl px-2 md:px-4 py-1 md:py-2 sm:text-sm leading-6 transition-all border",
+                      "focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500/60",
+                      active
+                        ? "bg-surface/100 border-brand-500/40 shadow-sm"
+                        : "border-0 hover:border hover:border-brand-500/40 hover:bg-surface/80",
+                    ].join(" ")}
+                  >
+                    {label}
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
+        </nav>
+        <img
+          width="12%"
+          src="/pics/full_text_logo.png"
+          className="bg-[#ffbdbd17] py-1 px-1 rounded-md"
+        />
+      </header>
+
+      {/* نسخه‌ی موبایل (کمتر از sm) */}
+      <header className="flex flex-col items-center justify-center sm:hidden pt-2 gap-3">
+        {/* بالا: LanguageToggle و لوگو */}
+        <div className="flex items-center justify-center gap-10 w-full px-6">
+          <LanguageToggle />
+          <img
+            width="80px"
+            src="/pics/full_text_logo.png"
+            className="bg-[#ffbdbd17] py-1 px-1 rounded-md"
+          />
+        </div>
+
+        {/* پایین: منو */}
+        <nav className="rounded-full border border-brand-800/50 glass">
+          <ul className="flex gap-1.5 py-1.5 px-1.5">
+            {links.map(({ label, slug }) => {
+              const active = isActive(slug);
+              const href = slug === "/" ? `/${locale}` : `/${locale}${slug}`;
+              return (
+                <li key={slug}>
+                  <Link
+                    href={href}
+                    aria-current={active ? "page" : undefined}
+                    className={[
+                      "block rounded-3xl px-2 md:px-4 py-1 md:py-2 text-xs sm:text-sm leading-6 transition-all border",
+                      "focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500/60",
+                      active
+                        ? "bg-surface/100 border-brand-500/40 shadow-sm"
+                        : "border-0 hover:border hover:border-brand-500/40 hover:bg-surface/80",
+                    ].join(" ")}
+                  >
+                    {label}
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
+        </nav>
+      </header>
+    </>
   );
 }
