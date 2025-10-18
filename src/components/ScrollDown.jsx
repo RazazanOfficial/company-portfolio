@@ -15,7 +15,7 @@ export default function ScrollDown({
       onClick={onClick}
       aria-label={label}
       className={[
-        "relative inline-flex h-[50px] w-[30px] items-center justify-center rounded-[30px]",
+        "relative inline-flex sm:h-[50px] sm:w-[30px] h-[40px] w-[24px] items-center justify-center rounded-[30px]",
         "bg-transparent outline outline-2 outline-current",
         "mouse-float",
         colorClass,
@@ -34,7 +34,7 @@ export default function ScrollDown({
         className={[
           "h-[10px] w-[5px] rounded-[10px] bg-[currentColor]",
           "scroll-nub-anim",
-          "[filter:drop-shadow(0_0_10px_currentColor)]",
+          "sm:[filter:drop-shadow(0_0_10px_currentColor)]",
         ].join(" ")}
       />
 

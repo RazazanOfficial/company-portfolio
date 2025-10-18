@@ -137,7 +137,7 @@ body {
 
 /* CTA buttons */
 .btn-primary {
-  @apply inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-medium;
+  @apply inline-flex items-center gap-2 rounded-full sm:px-6 sm:py-3 px-3 py-1.5 sm:text-sm text-xs font-medium;
   color: oklch(22% 0.03 264);
   background: var(--accent-hot);
   box-shadow: 0 8px 24px color-mix(in oklab, var(--accent-hot) 45%, transparent);
@@ -147,7 +147,7 @@ body {
   transform: translateY(-1px);
 }
 .btn-secondary {
-  @apply inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-medium border;
+  @apply inline-flex items-center gap-2 rounded-full sm:px-6 sm:py-3 px-3 py-1.5 sm:text-sm text-xs font-medium border;
   border-color: color-mix(in oklab, var(--accent-cool) 35%, var(--border));
   color: var(--text);
   background: color-mix(in oklab, var(--surface) 75%, transparent);
