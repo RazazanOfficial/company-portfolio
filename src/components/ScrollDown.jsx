@@ -10,13 +10,13 @@ export default function ScrollDown({
   onClick,
 }) {
   return (
-    <button
+    <button 
       type="button"
       onClick={onClick}
       aria-label={label}
       className={[
         "relative inline-flex sm:h-[50px] sm:w-[30px] h-[40px] w-[24px] items-center justify-center rounded-[30px]",
-        "bg-transparent outline outline-2 outline-current",
+        "bg-transparent outline-2 outline-current",
         "mouse-float",
         colorClass,
         className,

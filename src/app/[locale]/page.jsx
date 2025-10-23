@@ -24,6 +24,8 @@ import {
   Trophy,
   Users2,
 } from "lucide-react";
+import GlobeSection from "@/components/GlobeSection";
+import FeatureBento from "@/components/FeatureBento";
 
 export default function Page() {
   const locale = useLocale();
@@ -89,19 +91,7 @@ export default function Page() {
       // نمونه: اینپوت / فرم کوچک
       header: (
         <GridSlot>
-          <form
-            onSubmit={(e) => e.preventDefault()}
-            className="w-full max-w-xs flex items-center gap-2"
-          >
-            <input
-              type="email"
-              placeholder={"چخبر"}
-              className="flex-1 rounded-md border px-3 py-2 bg-[color-mix(in_oklab,var(--color-surface)_70%,transparent)] outline-none focus:ring-2 focus:ring-[var(--color-accent-cool)]"
-            />
-            <button className="btn-primary whitespace-nowrap text-sm px-3">
-              واقعا؟!
-            </button>
-          </form>
+          <GlobeSection/>
         </GridSlot>
       ),
       icon: <Stars className="h-4 w-4 text-[var(--color-text-muted)]" />,
@@ -182,37 +172,8 @@ export default function Page() {
       </section>
 
       {/* FEATURE GRID / BENTO */}
-      <section id="below-hero" className="relative z-10 pt-4 pb-16">
-        <div className="mx-auto w-full max-w-6xl px-4">
-          <div className="flex items-end justify-between mb-6">
-            <h2 className="text-2xl sm:text-3xl font-bold">
-              {t("sections.features.title")}
-            </h2>
-            <Link
-              href={`/${locale}/about`}
-              className="text-sm text-[var(--color-accent-cool)] hover:underline inline-flex items-center gap-1"
-            >
-              {t("sections.features.link")}
-              <ArrowRight className="h-4 w-4" />
-            </Link>
-          </div>
+<FeatureBento />
 
-          <BentoGrid className="grid mt-3 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
-            {items.map((item, i) => (
-              <BentoGridItem key={i} {...item}>
-                {/* Ensure the whole card is clickable when href exists */}
-                {item.href ? (
-                  <Link
-                    href={item.href}
-                    className="absolute inset-0"
-                    aria-label={item.title}
-                  />
-                ) : null}
-              </BentoGridItem>
-            ))}
-          </BentoGrid>
-        </div>
-      </section>
 
       {/* TRUST MARQUEE */}
       <section className="relative z-10 py-10">
