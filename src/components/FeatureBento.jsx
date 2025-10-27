@@ -2,9 +2,10 @@
 
 import { BentoGrid, BentoGridItem } from "@/components/ui/BentoGrid";
 import { useLocale, useTranslations } from "next-intl";
-import { Search, Compass, Type, Badge, FileText, Code2, Rocket } from "lucide-react";
+import { Search, Compass, Type, Badge, FileText, Code2, Rocket, ArrowRight, ArrowLeft } from "lucide-react";
 import "@/styles/backgroundTailwindConfig.css"
 import { BackgroundGradientAnimation } from "./ui/background-gradient-animation";
+import Link from "next/link";
 // ✅ 7-step Bento (icon + title side-by-side with gap, h5 body centered)
 //    - lucide-react icons
 //    - Gradient animation (class های animate-* از globals.css می‌آیند)
@@ -40,13 +41,10 @@ export default function FeatureBento() {
         <h2 className="text-xl font-semibold tracking-tight text-text sm:text-2xl">
           {t("sectionTitle")}
         </h2>
-        {!!headerPills?.length && (
-          <div className="hidden gap-2 md:flex">
-            {headerPills.map((p) => (
-              <span key={p} className="pill">{p}</span>
-            ))}
-          </div>
-        )}
+        <Link href="#" className="flex gap-2 text-blue-500 underline hover:text-blue-300 cursor-pointer">
+          <h5>{t("headerPills")}</h5>
+          <ArrowLeft/>
+        </Link>
       </div>
 
 <BentoGrid>
@@ -75,7 +73,7 @@ export default function FeatureBento() {
             interactive={false} // اگر نمی‌خوای اثر موس داشته باشه
           >
             <div className="absolute inset-0 grid place-items-center p-4 pointer-events-none">
-              <h5 className="relative z-10 text-lg mt-6 leading-6 text-text md:text-base text-center">
+              <h5 className="relative z-10 text-balance mt-8 md:text-lg text-center">
                 {s.body}
               </h5>
             </div>

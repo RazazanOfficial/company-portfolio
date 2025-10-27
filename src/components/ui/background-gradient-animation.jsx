@@ -68,7 +68,7 @@ export const BackgroundGradientAnimation = ({
       className={cn(
         "w-screen relative overflow-hidden top-0 left-0 bg-[linear-gradient(40deg,var(--gradient-background-start),var(--gradient-background-end))]",
         containerClassName
-      )} style={{height:"100% !important"}}>
+      )} style={{height:"200px !important"}}>
       <svg className="hidden">
         <defs>
           <filter id="blurMe">

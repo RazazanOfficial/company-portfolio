@@ -24,7 +24,6 @@ import {
   Trophy,
   Users2,
 } from "lucide-react";
-import GlobeSection from "@/components/GlobeSection";
 import FeatureBento from "@/components/FeatureBento";
 
 export default function Page() {
@@ -49,86 +48,6 @@ export default function Page() {
       </div>
     );
   };
-
-  const items = [
-    {
-      title: t("grid.gridTitle1"),
-      description: t("grid.gridDesc1"),
-      // نمونه: تصویر داخل اسلات
-      header: (
-        <GridSlot>
-          <img
-            src="/images/sample-1.jpg"
-            alt="sample"
-            className="h-28 w-full object-cover rounded-md"
-          />
-        </GridSlot>
-      ),
-      icon: <Images className="h-4 w-4 text-[var(--color-text-muted)]" />,
-      className: "",
-      href: `/${locale}/gallery`,
-    },
-    {
-      title: t("grid.gridTitle2"),
-      description: t("grid.gridDesc2"),
-      // نمونه: متن سفارشی
-      header: (
-        <GridSlot>
-          <p className="text-sm text-center leading-6">
-            سلام
-          </p>
-        </GridSlot>
-      ),
-      icon: (
-        <MessageSquare className="h-4 w-4 text-[var(--color-text-muted)]" />
-      ),
-      className: "",
-      href: `/${locale}/contact`,
-    },
-    {
-      title: t("grid.gridTitle3"),
-      description: t("grid.gridDesc3"),
-      // نمونه: اینپوت / فرم کوچک
-      header: (
-        <GridSlot>
-          <GlobeSection/>
-        </GridSlot>
-      ),
-      icon: <Stars className="h-4 w-4 text-[var(--color-text-muted)]" />,
-      className: "",
-    },
-    {
-      title: t("grid.gridTitle4"),
-      description: t("grid.gridDesc4"),
-      // نمونه: حالت پیش‌فرض بدون محتوای خاص
-      header: <GridSlot />,
-      icon: (
-        <ClipboardCopy className="h-4 w-4 text-[var(--color-text-muted)]" />
-      ),
-      className: "md:col-span-2",
-    },
-    {
-      title: t("grid.gridTitle5"),
-      description: t("grid.gridDesc5"),
-      header: <GridSlot />,
-      icon: <FileWarning className="h-4 w-4 text-[var(--color-text-muted)]" />,
-      className: "",
-    },
-    {
-      title: t("grid.gridTitle6"),
-      description: t("grid.gridDesc6"),
-      header: <GridSlot />,
-      icon: <Signature className="h-4 w-4 text-[var(--color-text-muted)]" />,
-      className: "",
-    },
-    {
-      title: t("grid.gridTitle7"),
-      description: t("grid.gridDesc7"),
-      header: <GridSlot />,
-      icon: <Columns3 className="h-4 w-4 text-[var(--color-text-muted)]" />,
-      className: "md:col-span-2",
-    },
-  ];
 
   const onScrollDown = () => {
     const el = document.getElementById("below-hero");
