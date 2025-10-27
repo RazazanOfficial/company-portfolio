@@ -75,7 +75,7 @@ export default function FeatureBento() {
             interactive={false} // اگر نمی‌خوای اثر موس داشته باشه
           >
             <div className="absolute inset-0 grid place-items-center p-4 pointer-events-none">
-              <h5 className="relative z-10 text-sm leading-6 text-text md:text-base text-center">
+              <h5 className="relative z-10 text-lg mt-6 leading-6 text-text md:text-base text-center">
                 {s.body}
               </h5>
             </div>
