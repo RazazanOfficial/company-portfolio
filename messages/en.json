@@ -39,7 +39,19 @@
         "link": "About our studio"
       },
       "trust": {
-        "text": "Trusted by ambitious startups & bold brands"
+        "text": "Trusted by ambitious startups & bold brands",
+        "items": [
+          "Artemis",
+          "Nova",
+          "Helix",
+          "Vertex",
+          "Zephyr",
+          "Orbit",
+          "Nimbus",
+          "Pulse"
+        ],
+        "count": 8,
+        "duplicates": 2
       },
       "services": {
         "title": "Services",
@@ -96,7 +108,8 @@
       "support": {
         "title": "Ongoing Support",
         "desc": "Retainers for growth, iteration and rapid experiments."
-      }
+      },
+      "expelore": "Expelore"
     },
     "process": {
       "discovery": {
@@ -162,50 +175,48 @@
       "AboutUs": "About Us",
       "ContactUs": "Contact Us",
       "GetStarted": "Get Started"
+    },
+    "BentoSteps": {
+      "aria": "Capabilities & Highlights",
+      "sectionTitle": "How we build brand value",
+      "headerPills": "Expelore",
+      "steps": [
+        {
+          "key": "discovery",
+          "label": "Discovery",
+          "body": "Audit goals, market, and audience to align scope."
+        },
+        {
+          "key": "strategy",
+          "label": "Strategy",
+          "body": "Positioning, value proposition, and messaging architecture."
+        },
+        {
+          "key": "namingVoice",
+          "label": "Naming & Voice",
+          "body": "Optional: name exploration and a clear tone-of-voice."
+        },
+        {
+          "key": "identity",
+          "label": "Identity System",
+          "body": "Logo, typography, color, grid, and motion principles."
+        },
+        {
+          "key": "collateral",
+          "label": "Collateral & Print",
+          "body": "Brochures, one-pagers, stationery, and packaging basics."
+        },
+        {
+          "key": "web",
+          "label": "Web & Design System",
+          "body": "UI kit, components, and a fast Next.js site."
+        },
+        {
+          "key": "launch",
+          "label": "Launch & Growth",
+          "body": "Guidelines, rollout, analytics, and iteration."
+        }
+      ]
     }
-  ,"BentoSteps": {
-  "aria": "Capabilities & Highlights",
-  "sectionTitle": "How we build brand value",
-  "headerPills": "Expelore",
-  "steps": [
-    {
-      "key": "discovery",
-      "label": "Discovery",
-      "body": "Audit goals, market, and audience to align scope."
-    },
-    {
-      "key": "strategy",
-      "label": "Strategy",
-      "body": "Positioning, value proposition, and messaging architecture."
-    },
-    {
-      "key": "namingVoice",
-      "label": "Naming & Voice",
-      "body": "Optional: name exploration and a clear tone-of-voice."
-    },
-    {
-      "key": "identity",
-      "label": "Identity System",
-      "body": "Logo, typography, color, grid, and motion principles."
-    },
-    {
-      "key": "collateral",
-      "label": "Collateral & Print",
-      "body": "Brochures, one-pagers, stationery, and packaging basics."
-    },
-    {
-      "key": "web",
-      "label": "Web & Design System",
-      "body": "UI kit, components, and a fast Next.js site."
-    },
-    {
-      "key": "launch",
-      "label": "Launch & Growth",
-      "body": "Guidelines, rollout, analytics, and iteration."
-    }
-  ]
-}
-
   }
-  
 }

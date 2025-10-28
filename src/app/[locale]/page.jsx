@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useLocale, useTranslations } from "next-intl";
+import { useLocale, useTranslations, useMessages } from "next-intl";
 import HeroBackdrop from "@/components/HeroBackdrop";
 import ScrollDown from "@/components/ScrollDown";
 import { BentoGrid, BentoGridItem } from "@/components/ui/BentoGrid";
@@ -30,11 +30,46 @@ export default function Page() {
   const locale = useLocale();
   const t = useTranslations("HomePage");
 
+  const messages = useMessages();
+
+  // آیتم‌های مارکـی از locale
+  const trustItems =
+    (typeof t.raw === "function"
+      ? t.raw("sections.trust.items")
+      : messages?.HomePage?.sections?.trust?.items) || [];
+
+  // تعداد نمایش (اگر در locale تعیین شده باشد؛ وگرنه = طول آرایه)
+  let trustCount = Array.isArray(trustItems) ? trustItems.length : 0;
+  try {
+    const raw = t("sections.trust.count");
+    const n = Number(raw);
+    if (!Number.isNaN(n) && n > 0) trustCount = n;
+  } catch {
+    /* اگر کلید نبود، همان مقدار پیش‌فرض می‌ماند */
+  }
+
+  // تعداد تکرار برای لوپِ بی‌درز مارکـی (به‌صورت پیش‌فرض 2 بگذار)
+  let duplicates = 2;
+  try {
+    const raw = t("sections.trust.duplicates");
+    const n = Number(raw);
+    if (!Number.isNaN(n) && n > 0) duplicates = n;
+  } catch {
+    /* پیش‌فرض 2 */
+  }
+
+  const itemsToShow = (Array.isArray(trustItems) ? trustItems : []).slice(
+    0,
+    trustCount
+  );
+
   // --- Small building blocks ---
   // GridSlot: همان باکس گرادیان قبلی، ولی حالا می‌توانید هر نوع محتوایی داخلش رندر کنید
   const GridSlot = ({ children, className = "" }) => {
     return (
-      <div className={`relative flex flex-1 h-full min-h-[6rem] w-full rounded-xl overflow-hidden ${className}`}>
+      <div
+        className={`relative flex flex-1 h-full min-h-[6rem] w-full rounded-xl overflow-hidden ${className}`}
+      >
         <div
           className="absolute inset-0"
           style={{
@@ -81,7 +116,8 @@ export default function Page() {
           </div>
 
           <div className="w-full flex justify-center mt-6">
-            <ScrollDown className="cursor-pointer"
+            <ScrollDown
+              className="cursor-pointer"
               colorClass="text-[var(--color-brand-500)]"
               label={t("scroll")}
               onClick={onScrollDown}
@@ -91,53 +127,28 @@ export default function Page() {
       </section>
 
       {/* FEATURE GRID / BENTO */}
-<FeatureBento />
-
+      <FeatureBento />
 
       {/* TRUST MARQUEE */}
       <section className="relative z-10 py-10">
         <div className="max-w-6xl mx-auto px-4">
-          <div className="rounded-2xl border glass p-4">
+          <div className="rounded-2xl border  glass p-4">
             <p className="text-center text-sm text-text-muted mb-4">
               {t("sections.trust.text")}
             </p>
+
             <div className="overflow-hidden relative">
               <div className="flex gap-10 whitespace-nowrap marquee-track">
-                {[
-                  "Artemis",
-                  "Nova",
-                  "Helix",
-                  "Vertex",
-                  "Zephyr",
-                  "Orbit",
-                  "Nimbus",
-                  "Pulse",
-                ].map((name, i) => (
-                  <span
-                    key={i}
-                    className="pill text-[13px] px-4 py-2 inline-flex items-center gap-2"
-                  >
-                    <Users2 className="h-4 w-4 opacity-80" /> {name}
-                  </span>
-                ))}
-                {/* duplicate group for seamless loop */}
-                {[
-                  "Artemis",
-                  "Nova",
-                  "Helix",
-                  "Vertex",
-                  "Zephyr",
-                  "Orbit",
-                  "Nimbus",
-                  "Pulse",
-                ].map((name, i) => (
-                  <span
-                    key={`dup-${i}`}
-                    className="pill text-[13px] px-4 py-2 inline-flex items-center gap-2"
-                  >
-                    <Users2 className="h-4 w-4 opacity-80" /> {name}
-                  </span>
-                ))}
+                {Array.from({ length: duplicates }).map((_, dupIdx) =>
+                  itemsToShow.map((name, i) => (
+                    <span
+                      key={`${dupIdx}-${i}-${name}`}
+                      className="border border-white rounded-2xl hover:bg-gray-800/80 text-[13px] px-4 py-2 inline-flex items-center gap-2"
+                    >
+                      <Users2 className="h-4 w-4 opacity-80" /> {name}
+                    </span>
+                  ))
+                )}
               </div>
             </div>
           </div>
@@ -154,7 +165,7 @@ export default function Page() {
             }
             to {
               transform: translateX(-50%);
-            }
+            } /* برای duplicates=2 بی‌درزه */
           }
         `}</style>
       </section>
@@ -189,12 +200,13 @@ export default function Page() {
               icon={<Sparkles className="h-5 w-5" />}
               title={t("services.content.title")}
               desc={t("services.content.desc")}
+              href={`/${locale}/gallery`}
             />
             <ServiceCard
               icon={<Images className="h-5 w-5" />}
               title={t("services.case.title")}
               desc={t("services.case.desc")}
-              href={`/${locale}/gallery`}
+              href={`/${locale}/about`}
             />
             <ServiceCard
               icon={<MessageSquare className="h-5 w-5" />}
@@ -272,9 +284,15 @@ export default function Page() {
           {/* Featured case */}
           <div className="md:col-span-2 rounded-2xl border glass p-6 flex items-center gap-6">
             <div className="grow">
-              <p className="pill inline-block mb-3">{t("sections.featured.pill")}</p>
-              <h3 className="text-xl font-semibold mb-2">{t("sections.featured.title")}</h3>
-              <p className="text-sm text-text-muted">{t("sections.featured.desc")}</p>
+              <p className="pill inline-block mb-3">
+                {t("sections.featured.pill")}
+              </p>
+              <h3 className="text-xl font-semibold mb-2">
+                {t("sections.featured.title")}
+              </h3>
+              <p className="text-sm text-text-muted">
+                {t("sections.featured.desc")}
+              </p>
               <div className="mt-4 flex gap-2">
                 <Link href={`/${locale}/gallery`} className="btn-secondary">
                   {t("sections.featured.view")}
@@ -321,7 +339,9 @@ export default function Page() {
                 className="snap-start min-w-[82%] sm:min-w-[520px] rounded-2xl border glass p-6"
               >
                 <Quote className="h-6 w-6 opacity-70" />
-                <blockquote className="mt-3 text-base leading-7">“{tst.quote}”</blockquote>
+                <blockquote className="mt-3 text-base leading-7">
+                  “{tst.quote}”
+                </blockquote>
                 <figcaption className="mt-3 text-sm text-text-muted">
                   {tst.name}
                 </figcaption>
@@ -359,7 +379,9 @@ export default function Page() {
       <section className="relative z-10 py-16">
         <div className="max-w-5xl mx-auto px-4 text-center rounded-3xl border glass p-10">
           <p className="pill inline-block mb-3">{t("sections.cta.pill")}</p>
-          <h3 className="text-2xl sm:text-3xl font-bold">{t("sections.cta.title")}</h3>
+          <h3 className="text-2xl sm:text-3xl font-bold">
+            {t("sections.cta.title")}
+          </h3>
           <p className="mt-2 text-text-muted">{t("sections.cta.desc")}</p>
           <div className="mt-6 flex items-center justify-center gap-3">
             <Link href={`/${locale}/contact`} className="btn-primary">
@@ -400,6 +422,7 @@ export default function Page() {
 
 // === Reusable bits ===
 function ServiceCard({ icon, title, desc, href }) {
+  const t = useTranslations("HomePage");
   const Comp = href ? Link : "div";
   const extra = href ? { href } : {};
   return (
@@ -418,7 +441,7 @@ function ServiceCard({ icon, title, desc, href }) {
       <p className="text-sm text-text-muted mt-2">{desc}</p>
       {href ? (
         <span className="mt-3 inline-flex items-center gap-1 text-[var(--color-accent-cool)] text-sm">
-          <span>Explore</span>
+          <span>{t("services.expelore")}</span>
           <ArrowRight className="h-4 w-4" />
         </span>
       ) : null}

@@ -2,7 +2,7 @@
 
 import { BentoGrid, BentoGridItem } from "@/components/ui/BentoGrid";
 import { useLocale, useTranslations } from "next-intl";
-import { Search, Compass, Type, Badge, FileText, Code2, Rocket, ArrowRight, ArrowLeft } from "lucide-react";
+import { Search, Compass, Type, Badge, FileText, Code2, Rocket, ArrowLeft } from "lucide-react";
 import "@/styles/backgroundTailwindConfig.css"
 import { BackgroundGradientAnimation } from "./ui/background-gradient-animation";
 import Link from "next/link";
