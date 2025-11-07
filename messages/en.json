@@ -6,16 +6,9 @@
     "ContactUs": "Contact Us"
   },
   "HomePage": {
-    "headline": {
-      "l1": "A Technology Partner",
-      "l2": "Focused on Your Growth"
-    },
+    "headline": { "l1": "A Technology Partner", "l2": "Focused on Your Growth" },
     "subcopy": "From idea to implementation—web, mobile, and software solutions built fast, scalable, and tailored to your brand.",
-    "cta": {
-      "primary": "Start with us",
-      "secondary": "See our work"
-    },
-
+    "cta": { "primary": "Start with us", "secondary": "See our work" },
     "scroll": "Scroll Down",
     "grid": {
       "gridTitle1": "Gallery",
@@ -34,49 +27,41 @@
       "gridDesc7": "We keep things transparent and simple."
     },
     "sections": {
-      "features": {
-        "title": "What we do",
-        "link": "About our studio"
-      },
+      "features": { "title": "What we do", "link": "About our studio" },
       "trust": {
         "text": "Trusted by ambitious startups & bold brands",
-        "items": [
-          "Artemis",
-          "Nova",
-          "Helix",
-          "Vertex",
-          "Zephyr",
-          "Orbit",
-          "Nimbus",
-          "Pulse"
-        ],
+        "items": ["Artemis", "Nova", "Helix", "Vertex", "Zephyr", "Orbit", "Nimbus", "Pulse"],
         "count": 8,
         "duplicates": 2
       },
-      "services": {
-        "title": "Services",
-        "pill": "End‑to‑end branding"
-      },
-      "process": {
-        "title": "Our process",
-        "time": "2–6 weeks typical"
-      },
-      "stats": {
-        "title": "Impact"
-      },
+      "services": { "title": "Services", "pill": "End-to-end branding" },
+      "process": { "title": "Our process", "time": "2–6 weeks typical" },
+      "stats": { "title": "Impact" },
       "featured": {
         "pill": "Case study",
-        "title": "From zero to category‑leader in 7 weeks",
-        "desc": "Brand repositioning, identity and conversion‑first website for a SaaS startup.",
+        "title": "From zero to category-leader in 7 weeks",
+        "desc": "Brand repositioning, identity and conversion-first website for a SaaS startup.",
         "view": "View project",
         "talk": "Start a project"
       },
       "testimonials": {
         "title": "Kind words",
-        "hint": "Swipe →"
+        "hint": "Swipe →",
+        "items": [
+          { "quote": "They captured our essence fast and shipped a site that converts.", "name": "Sahar • Nova" },
+          { "quote": "A rare combo of taste, speed and business understanding.", "name": "Arman • Vertex" },
+          { "quote": "The design system made our product UI consistent overnight.", "name": "Neda • Helix" }
+        ],
+        "count": 3
       },
       "faq": {
-        "title": "FAQ"
+        "title": "FAQ",
+        "items": [
+          { "q": "What do projects cost?", "a": "We scope transparently. Most engagements land between $3–12k depending on scope." },
+          { "q": "Do you work fast?", "a": "Yes. We compress timelines when needed and keep feedback cycles tight." },
+          { "q": "Can you migrate our old site?", "a": "Absolutely. We handle content migration, redirects and SEO hygiene." }
+        ],
+        "count": 3
       },
       "cta": {
         "pill": "Let’s talk",
@@ -85,90 +70,23 @@
       }
     },
     "services": {
-      "strategy": {
-        "title": "Brand Strategy",
-        "desc": "Positioning, voice, audience research and a crisp narrative for your brand."
-      },
-      "identity": {
-        "title": "Visual Identity",
-        "desc": "Logo, typography, color system, motion & design tokens that scale."
-      },
-      "web": {
-        "title": "Web Design & Dev",
-        "desc": "Next.js websites, landing pages, and high‑performance marketing sites."
-      },
-      "content": {
-        "title": "Content & Social",
-        "desc": "Art‑direction for social, templates, content calendars and AI‑assisted copy."
-      },
-      "case": {
-        "title": "Case Studies",
-        "desc": "Story‑driven showcases that highlight outcomes, not just deliverables."
-      },
-      "support": {
-        "title": "Ongoing Support",
-        "desc": "Retainers for growth, iteration and rapid experiments."
-      },
+      "strategy": { "title": "Brand Strategy", "desc": "Positioning, voice, audience research and a crisp narrative for your brand." },
+      "identity": { "title": "Visual Identity", "desc": "Logo, typography, color system, motion & design tokens that scale." },
+      "web": { "title": "Web Design & Dev", "desc": "Next.js websites, landing pages, and high-performance marketing sites." },
+      "content": { "title": "Content & Social", "desc": "Art-direction for social, templates, content calendars and AI-assisted copy." },
+      "case": { "title": "Case Studies", "desc": "Story-driven showcases that highlight outcomes, not just deliverables." },
+      "support": { "title": "Ongoing Support", "desc": "Retainers for growth, iteration and rapid experiments." },
       "expelore": "Expelore"
     },
     "process": {
-      "discovery": {
-        "title": "Discovery",
-        "desc": "A short workshop to align on goals and constraints."
-      },
-      "strategy": {
-        "title": "Strategy",
-        "desc": "Positioning, messaging and creative north‑star."
-      },
-      "design": {
-        "title": "Design",
-        "desc": "Identity, system, key screens and motion samples."
-      },
-      "iterate": {
-        "title": "Iterate",
-        "desc": "Tight feedback loops, then polish and QA."
-      },
-      "launch": {
-        "title": "Launch",
-        "desc": "Handover, docs and a crisp launch plan."
-      }
+      "discovery": { "title": "Discovery", "desc": "A short workshop to align on goals and constraints." },
+      "strategy": { "title": "Strategy", "desc": "Positioning, messaging and creative north-star." },
+      "design": { "title": "Design", "desc": "Identity, system, key screens and motion samples." },
+      "iterate": { "title": "Iterate", "desc": "Tight feedback loops, then polish and QA." },
+      "launch": { "title": "Launch", "desc": "Handover, docs and a crisp launch plan." }
     },
-    "stats": {
-      "projects": "Projects",
-      "cvrs": "Avg. lift",
-      "sectors": "Sectors"
-    },
-    "testimonials": {
-      "1": {
-        "quote": "They captured our essence fast and shipped a site that converts.",
-        "name": "Sahar • Nova"
-      },
-      "2": {
-        "quote": "A rare combo of taste, speed and business understanding.",
-        "name": "Arman • Vertex"
-      },
-      "3": {
-        "quote": "The design system made our product UI consistent overnight.",
-        "name": "Neda • Helix"
-      }
-    },
-    "faq": {
-      "1": {
-        "q": "What do projects cost?",
-        "a": "We scope transparently. Most engagements land between $3–12k depending on scope."
-      },
-      "2": {
-        "q": "Do you work fast?",
-        "a": "Yes. We compress timelines when needed and keep feedback cycles tight."
-      },
-      "3": {
-        "q": "Can you migrate our old site?",
-        "a": "Absolutely. We handle content migration, redirects and SEO hygiene."
-      }
-    },
-    "footer": {
-      "rights": "All rights reserved"
-    },
+    "stats": { "projects": "Projects", "cvrs": "Avg. lift", "sectors": "Sectors" },
+    "footer": { "rights": "All rights reserved" },
     "Header": {
       "HomePage": "Home",
       "Gallery": "Gallery",
@@ -181,41 +99,13 @@
       "sectionTitle": "How we build brand value",
       "headerPills": "Expelore",
       "steps": [
-        {
-          "key": "discovery",
-          "label": "Discovery",
-          "body": "Audit goals, market, and audience to align scope."
-        },
-        {
-          "key": "strategy",
-          "label": "Strategy",
-          "body": "Positioning, value proposition, and messaging architecture."
-        },
-        {
-          "key": "namingVoice",
-          "label": "Naming & Voice",
-          "body": "Optional: name exploration and a clear tone-of-voice."
-        },
-        {
-          "key": "identity",
-          "label": "Identity System",
-          "body": "Logo, typography, color, grid, and motion principles."
-        },
-        {
-          "key": "collateral",
-          "label": "Collateral & Print",
-          "body": "Brochures, one-pagers, stationery, and packaging basics."
-        },
-        {
-          "key": "web",
-          "label": "Web & Design System",
-          "body": "UI kit, components, and a fast Next.js site."
-        },
-        {
-          "key": "launch",
-          "label": "Launch & Growth",
-          "body": "Guidelines, rollout, analytics, and iteration."
-        }
+        { "key": "discovery", "label": "Discovery", "body": "Audit goals, market, and audience to align scope." },
+        { "key": "strategy", "label": "Strategy", "body": "Positioning, value proposition, and messaging architecture." },
+        { "key": "namingVoice", "label": "Naming & Voice", "body": "Optional: name exploration and a clear tone-of-voice." },
+        { "key": "identity", "label": "Identity System", "body": "Logo, typography, color, grid, and motion principles." },
+        { "key": "collateral", "label": "Collateral & Print", "body": "Brochures, one-pagers, stationery, and packaging basics." },
+        { "key": "web", "label": "Web & Design System", "body": "UI kit, components, and a fast Next.js site." },
+        { "key": "launch", "label": "Launch & Growth", "body": "Guidelines, rollout, analytics, and iteration." }
       ]
     }
   }

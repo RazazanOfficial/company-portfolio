@@ -4,15 +4,9 @@ import Link from "next/link";
 import { useLocale, useTranslations, useMessages } from "next-intl";
 import HeroBackdrop from "@/components/HeroBackdrop";
 import ScrollDown from "@/components/ScrollDown";
-import { BentoGrid, BentoGridItem } from "@/components/ui/BentoGrid";
 import {
   Images,
   MessageSquare,
-  Stars,
-  ClipboardCopy,
-  FileWarning,
-  Signature,
-  Columns3,
   Rocket,
   PenTool,
   Layers,
@@ -29,42 +23,74 @@ import FeatureBento from "@/components/FeatureBento";
 export default function Page() {
   const locale = useLocale();
   const t = useTranslations("HomePage");
-
   const messages = useMessages();
 
-  // آیتم‌های مارکـی از locale
+  // ---------- TRUST (مارکی) ----------
   const trustItems =
     (typeof t.raw === "function"
       ? t.raw("sections.trust.items")
       : messages?.HomePage?.sections?.trust?.items) || [];
 
-  // تعداد نمایش (اگر در locale تعیین شده باشد؛ وگرنه = طول آرایه)
   let trustCount = Array.isArray(trustItems) ? trustItems.length : 0;
   try {
     const raw = t("sections.trust.count");
     const n = Number(raw);
     if (!Number.isNaN(n) && n > 0) trustCount = n;
-  } catch {
-    /* اگر کلید نبود، همان مقدار پیش‌فرض می‌ماند */
-  }
+  } catch {}
 
-  // تعداد تکرار برای لوپِ بی‌درز مارکـی (به‌صورت پیش‌فرض 2 بگذار)
   let duplicates = 2;
   try {
     const raw = t("sections.trust.duplicates");
     const n = Number(raw);
     if (!Number.isNaN(n) && n > 0) duplicates = n;
-  } catch {
-    /* پیش‌فرض 2 */
-  }
+  } catch {}
 
   const itemsToShow = (Array.isArray(trustItems) ? trustItems : []).slice(
     0,
     trustCount
   );
 
+  // ---------- TESTIMONIALS (داینامیک) ----------
+  const testimonialsItems =
+    (typeof t.raw === "function"
+      ? t.raw("sections.testimonials.items")
+      : messages?.HomePage?.sections?.testimonials?.items) || [];
+
+  let testimonialCount = Array.isArray(testimonialsItems)
+    ? testimonialsItems.length
+    : 0;
+  try {
+    const raw = t("sections.testimonials.count");
+    const n = Number(raw);
+    if (!Number.isNaN(n) && n > 0) {
+      testimonialCount = Math.min(n, testimonialCount);
+    }
+  } catch {}
+
+  const testimonialsToShow = (Array.isArray(testimonialsItems)
+    ? testimonialsItems
+    : []
+  ).slice(0, testimonialCount);
+
+  // ---------- FAQ (داینامیک با count + فقط Hover با انیمیشن 1s) ----------
+  const faqItemsRaw =
+    (typeof t.raw === "function"
+      ? t.raw("sections.faq.items")
+      : messages?.HomePage?.sections?.faq?.items) || [];
+
+  let faqCount = Array.isArray(faqItemsRaw) ? faqItemsRaw.length : 0;
+  try {
+    const raw = t("sections.faq.count");
+    const n = Number(raw);
+    if (!Number.isNaN(n) && n > 0) faqCount = Math.min(n, faqItemsRaw.length);
+  } catch {}
+
+  const faqItems = (Array.isArray(faqItemsRaw) ? faqItemsRaw : []).slice(
+    0,
+    faqCount
+  );
+
   // --- Small building blocks ---
-  // GridSlot: همان باکس گرادیان قبلی، ولی حالا می‌توانید هر نوع محتوایی داخلش رندر کنید
   const GridSlot = ({ children, className = "" }) => {
     return (
       <div
@@ -320,30 +346,17 @@ export default function Page() {
           </div>
 
           <div className="snap-x snap-mandatory overflow-x-auto flex gap-4 pb-2 -mx-4 px-4">
-            {[
-              {
-                quote: t("testimonials.1.quote"),
-                name: t("testimonials.1.name"),
-              },
-              {
-                quote: t("testimonials.2.quote"),
-                name: t("testimonials.2.name"),
-              },
-              {
-                quote: t("testimonials.3.quote"),
-                name: t("testimonials.3.name"),
-              },
-            ].map((tst, i) => (
+            {testimonialsToShow.map((tst, i) => (
               <figure
                 key={i}
                 className="snap-start min-w-[82%] sm:min-w-[520px] rounded-2xl border glass p-6"
               >
                 <Quote className="h-6 w-6 opacity-70" />
                 <blockquote className="mt-3 text-base leading-7">
-                  “{tst.quote}”
+                  {tst?.quote ? `“${tst.quote}”` : null}
                 </blockquote>
                 <figcaption className="mt-3 text-sm text-text-muted">
-                  {tst.name}
+                  {tst?.name}
                 </figcaption>
               </figure>
             ))}
@@ -351,27 +364,31 @@ export default function Page() {
         </div>
       </section>
 
-      {/* FAQ */}
+      {/* FAQ (Hover-only با انیمیشن 1s) */}
       <section className="relative z-10 py-12">
         <div className="max-w-4xl mx-auto px-4">
           <h2 className="text-2xl sm:text-3xl font-bold mb-6">
             {t("sections.faq.title")}
           </h2>
+
           <div className="space-y-3">
-            {[
-              { q: t("faq.1.q"), a: t("faq.1.a") },
-              { q: t("faq.2.q"), a: t("faq.2.a") },
-              { q: t("faq.3.q"), a: t("faq.3.a") },
-            ].map((f, i) => (
-              <details key={i} className="group rounded-2xl border glass p-5">
-                <summary className="flex cursor-pointer items-center justify-between list-none">
+            {faqItems.map((f, i) => (
+              <div key={i} className="group rounded-2xl border glass p-5">
+                <div className="flex items-center justify-between">
                   <span className="font-medium">{f.q}</span>
-                  <HelpCircle className="h-5 w-5 opacity-70 transition-transform group-open:rotate-180" />
-                </summary>
-                <p className="mt-3 text-sm text-text-muted">{f.a}</p>
-              </details>
+                  <HelpCircle className="h-5 w-5 opacity-70 transition-transform duration-1000 ease-in-out group-hover:rotate-180" />
+                </div>
+
+                {/* انیمیشن نرم با max-height + opacity */}
+                <div className="overflow-hidden transition-all duration-1000 ease-in-out max-h-0 group-hover:max-h-[40rem]">
+                  <p className="mt-3 text-sm text-text-muted opacity-0 group-hover:opacity-100 transition-opacity duration-1000 ease-in-out">
+                    {f.a}
+                  </p>
+                </div>
+              </div>
             ))}
           </div>
+
         </div>
       </section>
 
