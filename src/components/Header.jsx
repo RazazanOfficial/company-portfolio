@@ -26,7 +26,7 @@ export default function Header() {
   return (
     <>
       {/* نسخه‌ی دسکتاپ و تبلت */}
-      <header className="hidden sm:flex relative z-20 items-center sm:justify-evenly justify-center pt-3 md:px-4 md:pt-6 sm:pt-4 gap-5 sm:gap-0 md:gap-3">
+      <header className="hidden sm:flex relative z-20 items-center sm:justify-evenly justify-center md:px-4 gap-5 sm:gap-0 md:gap-3">
         <LanguageToggle />
         <nav className="rounded-full border border-brand-800/50 glass">
           <ul className="flex gap-1.5 py-1.5 px-1.5">
@@ -54,9 +54,8 @@ export default function Header() {
           </ul>
         </nav>
         <img
-          width="12%"
           src="/pics/full_text_logo.png"
-          className="bg-[#ffbdbd17] py-1 px-1 rounded-md"
+          className="py-1 px-1 rounded-md w-[60px]"
         />
       </header>
 

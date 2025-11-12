@@ -404,7 +404,7 @@ export default function Page() {
             <Link href={`/${locale}/contact`} className="btn-primary">
               {t("cta.primary")}
             </Link>
-            <Link href={`/${locale}/about`} className="btn-secondary">
+            <Link href={`/${locale}/gallery`} className="btn-secondary">
               {t("cta.secondary")}
             </Link>
           </div>
