@@ -55,19 +55,18 @@ export default function Header() {
         </nav>
         <img
           src="/pics/full_text_logo.png"
-          className="py-1 px-1 rounded-md w-[60px]"
+          className="py-1 px-1 rounded-md 2xl:w-[100px] xl:w-[90px] md:w-[80px] sm:w-[65px]"
         />
       </header>
 
       {/* نسخه‌ی موبایل (کمتر از sm) */}
-      <header className="flex flex-col items-center justify-center sm:hidden pt-2 gap-3">
+      <header className="flex flex-col items-center justify-center sm:hidden gap-3">
         {/* بالا: LanguageToggle و لوگو */}
         <div className="flex items-center justify-center gap-10 w-full px-6">
           <LanguageToggle />
           <img
-            width="80px"
             src="/pics/full_text_logo.png"
-            className="bg-[#ffbdbd17] py-1 px-1 rounded-md"
+            className="px-1 rounded-md w-[50px]"
           />
         </div>
 

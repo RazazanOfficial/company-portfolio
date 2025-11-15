@@ -22,25 +22,27 @@ import FeatureBento from "@/components/FeatureBento";
 
 export default function Page() {
   const locale = useLocale();
+  const h = useTranslations("Header");
   const t = useTranslations("HomePage");
+  const f = useTranslations("footer")
   const messages = useMessages();
 
   // ---------- TRUST (مارکی) ----------
   const trustItems =
     (typeof t.raw === "function"
-      ? t.raw("sections.trust.items")
+      ? t.raw("sections.trusts.items")
       : messages?.HomePage?.sections?.trust?.items) || [];
 
   let trustCount = Array.isArray(trustItems) ? trustItems.length : 0;
   try {
-    const raw = t("sections.trust.count");
+    const raw = t("sections.trusts.count");
     const n = Number(raw);
     if (!Number.isNaN(n) && n > 0) trustCount = n;
   } catch {}
 
   let duplicates = 2;
   try {
-    const raw = t("sections.trust.duplicates");
+    const raw = t("sections.trusts.duplicates");
     const n = Number(raw);
     if (!Number.isNaN(n) && n > 0) duplicates = n;
   } catch {}
@@ -75,12 +77,12 @@ export default function Page() {
   // ---------- FAQ (داینامیک با count + فقط Hover با انیمیشن 1s) ----------
   const faqItemsRaw =
     (typeof t.raw === "function"
-      ? t.raw("sections.faq.items")
+      ? t.raw("sections.faqs.items")
       : messages?.HomePage?.sections?.faq?.items) || [];
 
   let faqCount = Array.isArray(faqItemsRaw) ? faqItemsRaw.length : 0;
   try {
-    const raw = t("sections.faq.count");
+    const raw = t("sections.faqs.count");
     const n = Number(raw);
     if (!Number.isNaN(n) && n > 0) faqCount = Math.min(n, faqItemsRaw.length);
   } catch {}
@@ -125,8 +127,8 @@ export default function Page() {
         <div className="flex flex-col justify-center mx-auto px-4 pt-2 pb-24">
           <div className="text-center max-w-3xl mx-auto mt-30 lg:mt-1 sm:mt-5 text-2xl xl:text-5xl lg:text-4xl md:text-4xl sm:text-3xl">
             <h1 className="font-extrabold tracking-tight">
-              <span className="block">{t("headline.l1")}</span>
-              <span className="block">{t("headline.l2")}</span>
+              <span className="block">{t("heroSection.l1")}</span>
+              <span className="block">{t("heroSection.l2")}</span>
             </h1>
             <p className="text-text-muted text-sm xl:text-lg lg:text-md md:text-base sm:text-sm lg:mt-3 md:mt-22 sm:mt-14">
               {t("subcopy")}
@@ -160,7 +162,7 @@ export default function Page() {
         <div className="max-w-6xl mx-auto px-4">
           <div className="rounded-2xl border  glass p-4">
             <p className="text-center text-sm text-text-muted mb-4">
-              {t("sections.trust.text")}
+              {t("sections.trusts.text")}
             </p>
 
             <div className="overflow-hidden relative">
@@ -209,35 +211,35 @@ export default function Page() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             <ServiceCard
               icon={<PenTool className="h-5 w-5" />}
-              title={t("services.strategy.title")}
-              desc={t("services.strategy.desc")}
+              title={t("sections.services.strategy.title")}
+              desc={t("sections.services.strategy.desc")}
             />
             <ServiceCard
               icon={<Layers className="h-5 w-5" />}
-              title={t("services.identity.title")}
-              desc={t("services.identity.desc")}
+              title={t("sections.services.identity.title")}
+              desc={t("sections.services.identity.desc")}
             />
             <ServiceCard
               icon={<Rocket className="h-5 w-5" />}
-              title={t("services.web.title")}
-              desc={t("services.web.desc")}
+              title={t("sections.services.web.title")}
+              desc={t("sections.services.web.desc")}
             />
             <ServiceCard
               icon={<Sparkles className="h-5 w-5" />}
-              title={t("services.content.title")}
-              desc={t("services.content.desc")}
+              title={t("sections.services.content.title")}
+              desc={t("sections.services.content.desc")}
               href={`/${locale}/gallery`}
             />
             <ServiceCard
               icon={<Images className="h-5 w-5" />}
-              title={t("services.case.title")}
-              desc={t("services.case.desc")}
+              title={t("sections.services.case.title")}
+              desc={t("sections.services.case.desc")}
               href={`/${locale}/about`}
             />
             <ServiceCard
               icon={<MessageSquare className="h-5 w-5" />}
-              title={t("services.support.title")}
-              desc={t("services.support.desc")}
+              title={t("sections.services.support.title")}
+              desc={t("sections.services.support.desc")}
               href={`/${locale}/contact`}
             />
           </div>
@@ -259,24 +261,24 @@ export default function Page() {
           <ol className="relative border-s border-[var(--color-border)] ps-6">
             {[
               {
-                title: t("process.discovery.title"),
-                desc: t("process.discovery.desc"),
+                title: t("sections.process.discovery.title"),
+                desc: t("sections.process.discovery.desc"),
               },
               {
-                title: t("process.strategy.title"),
-                desc: t("process.strategy.desc"),
+                title: t("sections.process.strategy.title"),
+                desc: t("sections.process.strategy.desc"),
               },
               {
-                title: t("process.design.title"),
-                desc: t("process.design.desc"),
+                title: t("sections.process.design.title"),
+                desc: t("sections.process.design.desc"),
               },
               {
-                title: t("process.iterate.title"),
-                desc: t("process.iterate.desc"),
+                title: t("sections.process.iterate.title"),
+                desc: t("sections.process.iterate.desc"),
               },
               {
-                title: t("process.launch.title"),
-                desc: t("process.launch.desc"),
+                title: t("sections.process.launch.title"),
+                desc: t("sections.process.launch.desc"),
               },
             ].map((s, i) => (
               <li key={i} className="mb-8 ms-2">
@@ -301,9 +303,9 @@ export default function Page() {
               <h3 className="font-semibold">{t("sections.stats.title")}</h3>
             </div>
             <dl className="grid grid-cols-3 gap-3">
-              <Stat num="120+" label={t("stats.projects")} />
-              <Stat num="36%" label={t("stats.cvrs")} />
-              <Stat num="14" label={t("stats.sectors")} />
+              <Stat num={t("sections.stats.projectsNumber")} label={t("sections.stats.projects")} />
+              <Stat num={t("sections.stats.cvrsNumber")} label={t("sections.stats.cvrs")} />
+              <Stat num={t("sections.stats.sectorsNumber")} label={t("sections.stats.sectors")} />
             </dl>
           </div>
 
@@ -311,20 +313,20 @@ export default function Page() {
           <div className="md:col-span-2 rounded-2xl border glass p-6 flex items-center gap-6">
             <div className="grow">
               <p className="pill inline-block mb-3">
-                {t("sections.featured.pill")}
+                {t("sections.features.pill")}
               </p>
               <h3 className="text-xl font-semibold mb-2">
-                {t("sections.featured.title")}
+                {t("sections.features.title")}
               </h3>
               <p className="text-sm text-text-muted">
-                {t("sections.featured.desc")}
+                {t("sections.features.desc")}
               </p>
               <div className="mt-4 flex gap-2">
                 <Link href={`/${locale}/gallery`} className="btn-secondary">
-                  {t("sections.featured.view")}
+                  {t("sections.features.view")}
                 </Link>
                 <Link href={`/${locale}/contact`} className="btn-primary">
-                  {t("sections.featured.talk")}
+                  {t("sections.features.talk")}
                 </Link>
               </div>
             </div>
@@ -368,7 +370,7 @@ export default function Page() {
       <section className="relative z-10 py-12">
         <div className="max-w-4xl mx-auto px-4">
           <h2 className="text-2xl sm:text-3xl font-bold mb-6">
-            {t("sections.faq.title")}
+            {t("sections.faqs.title")}
           </h2>
 
           <div className="space-y-3">
@@ -395,11 +397,11 @@ export default function Page() {
       {/* FINAL CTA */}
       <section className="relative z-10 py-16">
         <div className="max-w-5xl mx-auto px-4 text-center rounded-3xl border glass p-10">
-          <p className="pill inline-block mb-3">{t("sections.cta.pill")}</p>
+          <p className="pill inline-block mb-3">{t("sections.ctas.pill")}</p>
           <h3 className="text-2xl sm:text-3xl font-bold">
-            {t("sections.cta.title")}
+            {t("sections.ctas.title")}
           </h3>
-          <p className="mt-2 text-text-muted">{t("sections.cta.desc")}</p>
+          <p className="mt-2 text-text-muted">{t("sections.ctas.desc")}</p>
           <div className="mt-6 flex items-center justify-center gap-3">
             <Link href={`/${locale}/contact`} className="btn-primary">
               {t("cta.primary")}
@@ -415,20 +417,20 @@ export default function Page() {
       <footer className="relative z-10 py-10">
         <div className="max-w-6xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-[var(--color-border)] pt-6">
           <span className="text-sm text-text-muted">
-            © {new Date().getFullYear()} — {t("footer.rights")}
+            © {new Date().getFullYear()} — {f("rights")}
           </span>
           <nav className="flex flex-wrap items-center gap-3 text-sm">
             <Link href={`/${locale}`} className="hover:underline">
-              {t("Header.HomePage")}
+              {h("HomePage")}
             </Link>
             <Link href={`/${locale}/gallery`} className="hover:underline">
-              {t("Header.Gallery")}
+              {h("Gallery")}
             </Link>
             <Link href={`/${locale}/about`} className="hover:underline">
-              {t("Header.AboutUs")}
+              {h("AboutUs")}
             </Link>
             <Link href={`/${locale}/contact`} className="hover:underline">
-              {t("Header.ContactUs")}
+              {h("ContactUs")}
             </Link>
           </nav>
         </div>
@@ -458,7 +460,7 @@ function ServiceCard({ icon, title, desc, href }) {
       <p className="text-sm text-text-muted mt-2">{desc}</p>
       {href ? (
         <span className="mt-3 inline-flex items-center gap-1 text-[var(--color-accent-cool)] text-sm">
-          <span>{t("services.expelore")}</span>
+          <span>{t("sections.services.expelore")}</span>
           <ArrowRight className="h-4 w-4" />
         </span>
       ) : null}

@@ -13,7 +13,7 @@ import Link from "next/link";
 
 export default function FeatureBento() {
   const locale = useLocale();
-  const t = useTranslations("HomePage.BentoSteps");
+  const t = useTranslations("HomePage.sections.grids");
 
   const headerPills = t.raw("headerPills");
   const steps = t.raw("steps"); // [{ key, label, body } x7]
@@ -41,7 +41,7 @@ export default function FeatureBento() {
         <h2 className="text-xl font-semibold tracking-tight text-text sm:text-2xl">
           {t("sectionTitle")}
         </h2>
-        <Link href="#" className="flex gap-2 text-blue-500 underline hover:text-blue-300 cursor-pointer">
+        <Link href="/gallery" className="flex gap-2 text-blue-500 underline hover:text-blue-300 cursor-pointer">
           <h5>{t("headerPills")}</h5>
           <ArrowLeft/>
         </Link>
@@ -65,20 +65,19 @@ export default function FeatureBento() {
           </div>
         }
         description=""
-        header={
-          <BackgroundGradientAnimation
-            // با !h-40 و !w-full اندازه‌ی باکس رو enforce می‌کنیم
-            containerClassName="!h-40 !w-full rounded-lg overflow-hidden relative"
-            className="relative"
-            interactive={false} // اگر نمی‌خوای اثر موس داشته باشه
-          >
-            <div className="absolute inset-0 grid place-items-center p-4 pointer-events-none">
-              <h5 className="relative z-10 text-balance mt-8 md:text-lg text-center">
-                {s.body}
-              </h5>
-            </div>
-          </BackgroundGradientAnimation>
-        }
+header={
+  <div className="!h-40 !w-full rounded-lg overflow-hidden relative">
+    <img
+      src={s.label ?? "/images/user-avatar.jpg"} // این مسیر رو خودت عوض کن
+      alt={s.label}
+      fill="true"
+      className="object-cover"
+      sizes="(min-width: 768px) 33vw, 100vw"
+      // priority={idx === 0}
+    />
+  </div>
+}
+
       />
     );
   })}
