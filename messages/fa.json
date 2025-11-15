@@ -11,20 +11,62 @@
     "cta": { "primary": "با ما شروع کن", "secondary": "نمونه‌کارها" },
     "scroll": "اسکرول کنید",
     "sections": {
-      "grids": {
-        "aria": "توانمندی‌ها و هایلایت‌ها",
-        "sectionTitle": "چطور ارزش برند را می‌سازیم",
-        "headerPills": "مشاهده کنید",
-        "steps": [
-          { "key": "discovery", "label": "اکتشاف", "body": "ارزیابی اهداف، بازار و مخاطب برای هم‌ترازی دامنهٔ کار." },
-          { "key": "strategy", "label": "استراتژی", "body": "پوزیشنینگ، ارزش پیشنهادی و معماری پیام." },
-          { "key": "namingVoice", "label": "نام‌گذاری و لحن", "body": "اختیاری: اکسپلور نام و تعریف لحن/شخصیت برند." },
-          { "key": "identity", "label": "https://handsomecake.com/cdn/shop/files/40221c0d-215b-53e8-af60-d480ef53df6d.jpg?v=1737379270&width=1500", "body": "لوگو، تایپوگرافی، رنگ، گرید و اصول موشن." },
-          { "key": "collateral", "label": "کالترال و چاپ", "body": "بروشور، وان‌پیجر، اوراق اداری و مبانی پکیجینگ." },
-          { "key": "web", "label": "وب و دیزاین‌سیستم", "body": "UI Kit، کامپوننت‌ها و وب‌سایت سریع با Next.js." },
-          { "key": "launch", "label": "لانچ و رشد", "body": "گایدلاین‌ها، رول‌اوت، آنالیتیکس و تکرار/بهبود." }
-        ]
+  "grids": {
+    "aria": "توانمندی‌ها و هایلایت‌ها",
+    "sectionTitle": "چطور ارزش برند را می‌سازیم",
+    "headerPills": "مشاهده کنید",
+    "count": 8,
+    "steps": [
+      {
+        "key": "discovery",
+        "title": "اکتشاف",
+        "desc": "ارزیابی اهداف، بازار و مخاطب برای هم‌ترازی دامنهٔ کار.",
+        "img": "https://s31.uupload.ir/files/razazanofficial/1.jpg"
       },
+      {
+        "key": "strategy",
+        "title": "استراتژی",
+        "desc": "پوزیشنینگ، ارزش پیشنهادی و معماری پیام.",
+        "img": "https://s31.uupload.ir/files/razazanofficial/2.jpg"
+      },
+      {
+        "key": "namingVoice",
+        "title": "نام‌گذاری و لحن",
+        "desc": "اختیاری: اکسپلور نام و تعریف لحن/شخصیت برند.",
+        "img": "https://s31.uupload.ir/files/razazanofficial/3.jpg"
+      },
+      {
+        "key": "identity",
+        "title": "هویت و سیستم بصری",
+        "desc": "لوگو، تایپوگرافی، رنگ، گرید و اصول موشن.",
+        "img": "https://s31.uupload.ir/files/razazanofficial/4.webp"
+      },
+      {
+        "key": "collateral",
+        "title": "کالترال و چاپ",
+        "desc": "بروشور، وان‌پیجر، اوراق اداری و مبانی پکیجینگ.",
+        "img": "https://s31.uupload.ir/files/razazanofficial/5.jpg"
+      },
+      {
+        "key": "web",
+        "title": "وب و دیزاین‌سیستم",
+        "desc": "UI Kit، کامپوننت‌ها و وب‌سایت سریع با Next.js.",
+        "img": "https://s31.uupload.ir/files/razazanofficial/6.jpg"
+      },
+      {
+        "key": "launch",
+        "title": "لانچ و رشد",
+        "desc": "گایدلاین‌ها، رول‌اوت، آنالیتیکس و تکرار/بهبود.",
+        "img": "https://s31.uupload.ir/files/razazanofficial/7.jpg"
+      },
+      {
+        "key": "launchy",
+        "title": "لانچ و رشد",
+        "desc": "گایدلاین‌ها، رول‌اوت، آنالیتیکس و تکرار/بهبود.",
+        "img": "https://s31.uupload.ir/files/razazanofficial/8.jpg"
+      }
+    ]
+  },
       "trusts": {
         "text": "مورد اعتماد استارتاپ‌های بلندپرواز و برندهای جسور",
         "items": ["آرتمیس", "نوا", "هِلیکس", "وِرتکس", "زِفیر", "اوربیت", "نیمباس", "پالس"],

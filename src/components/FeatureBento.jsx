@@ -1,22 +1,28 @@
-'use client';
+"use client";
 
 import { BentoGrid, BentoGridItem } from "@/components/ui/BentoGrid";
 import { useLocale, useTranslations } from "next-intl";
-import { Search, Compass, Type, Badge, FileText, Code2, Rocket, ArrowLeft } from "lucide-react";
-import "@/styles/backgroundTailwindConfig.css"
-import { BackgroundGradientAnimation } from "./ui/background-gradient-animation";
+import {
+  Search,
+  Compass,
+  Type,
+  Badge,
+  FileText,
+  Code2,
+  Rocket,
+  ArrowLeft
+} from "lucide-react";
 import Link from "next/link";
-// ✅ 7-step Bento (icon + title side-by-side with gap, h5 body centered)
-//    - lucide-react icons
-//    - Gradient animation (class های animate-* از globals.css می‌آیند)
-//    - i18n namespace: "HomePage.BentoSteps"
+import Image from "next/image";
+import "@/styles/backgroundTailwindConfig.css";
 
 export default function FeatureBento() {
   const locale = useLocale();
   const t = useTranslations("HomePage.sections.grids");
 
-  const headerPills = t.raw("headerPills");
-  const steps = t.raw("steps"); // [{ key, label, body } x7]
+  const headerPills = t("headerPills");
+  const steps = t.raw("steps"); // آرایه‌ی استپ‌ها
+  const count = t.raw("count"); // تعداد موردنظر
 
   const iconMap = {
     discovery: Search,
@@ -25,11 +31,13 @@ export default function FeatureBento() {
     identity: Badge,
     collateral: FileText,
     web: Code2,
-    launch: Rocket,
+    launch: Rocket
   };
 
-  // Layout برای ۷ کاشی (۱۲ ستون در md+)
-  const spans = [6, 6, 4, 4, 4, 8, 4];
+  const safeSteps = Array.isArray(steps) ? steps : [];
+  const maxCount =
+    typeof count === "number" ? count : safeSteps.length || 0;
+  const visibleSteps = safeSteps.slice(0, maxCount);
 
   return (
     <section
@@ -41,47 +49,60 @@ export default function FeatureBento() {
         <h2 className="text-xl font-semibold tracking-tight text-text sm:text-2xl">
           {t("sectionTitle")}
         </h2>
-        <Link href="/gallery" className="flex gap-2 text-blue-500 underline hover:text-blue-300 cursor-pointer">
-          <h5>{t("headerPills")}</h5>
-          <ArrowLeft/>
+
+        <Link
+          href="/gallery"
+          className="flex items-center gap-2 text-sm font-medium text-blue-500 underline underline-offset-4 hover:text-blue-300"
+        >
+          <span>{headerPills}</span>
+          <ArrowLeft className="h-4 w-4" />
         </Link>
       </div>
 
-<BentoGrid>
-  {steps?.slice(0, 7).map((s, idx) => {
-    const Icon = iconMap[s.key] ?? FileText;
-    const span = spans[idx] || 4;
-    const spanClass =
-      span === 8 ? "md:col-span-8" : span === 6 ? "md:col-span-6" : "md:col-span-4";
+      {/* ۲ تا در هر ردیف روی md+ */}
+      <BentoGrid className="md:grid-cols-2 md:auto-rows-[20rem]">
+        {visibleSteps.map((s, idx) => {
+          const Icon = iconMap[s.key] ?? FileText;
 
-    return (
-      <BentoGridItem
-        key={s.key || idx}
-        className={`${spanClass} bg-surface border-border overflow-hidden`}
-        title={
-          <div className="flex items-center gap-2 text-sm font-medium">
-            <Icon className="h-4 w-4" aria-hidden />
-            <span>{s.label}</span>
-          </div>
-        }
-        description=""
-header={
-  <div className="!h-40 !w-full rounded-lg overflow-hidden relative">
-    <img
-      src={s.label ?? "/images/user-avatar.jpg"} // این مسیر رو خودت عوض کن
-      alt={s.label}
-      fill="true"
-      className="object-cover"
-      sizes="(min-width: 768px) 33vw, 100vw"
-      // priority={idx === 0}
-    />
-  </div>
-}
+          // این رو هرطور دوست داری customize کن
+          const href = `/${locale}/gallery/${s.key}`;
 
-      />
-    );
-  })}
-</BentoGrid>
+          return (
+            <Link
+              key={s.key || idx}
+              href={href}
+              className="group block h-full focus:outline-none rounded-2xl hover:scale-[0.98] active:scale-[0.95] bg-slate-700"
+            >
+              <BentoGridItem
+                className="bg-surface/60 border-border/60 h-full"
+                header={
+                  <div className="relative w-full overflow-hidden rounded-xl">
+                    {s.img && (
+                      <img
+                        src={s.img}
+                        alt={s.title}
+                        className=""
+                        sizes="(min-width: 768px) 50vw, 100vw"
+                      />
+                    )}
+                    <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
+                  </div>
+                }
+                title={
+                  <div className="flex items-center gap-2 text-sm font-semibold text-neutral-900 dark:text-neutral-100">
+                    <Icon
+                      className="h-4 w-4 opacity-80"
+                      aria-hidden="true"
+                    />
+                    <span>{s.title}</span>
+                  </div>
+                }
+                description={s.desc}
+              />
+            </Link>
+          );
+        })}
+      </BentoGrid>
     </section>
   );
 }

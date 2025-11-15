@@ -11,20 +11,62 @@
     "cta": { "primary": "Start with us", "secondary": "See our work" },
     "scroll": "Scroll Down",
     "sections": {
-      "grids": {
-        "aria": "Capabilities & Highlights",
-        "sectionTitle": "How we build brand value",
-        "headerPills": "Expelore",
-        "steps": [
-          { "key": "discovery", "label": "Discovery", "body": "Audit goals, market, and audience to align scope." },
-          { "key": "strategy", "label": "Strategy", "body": "Positioning, value proposition, and messaging architecture." },
-          { "key": "namingVoice", "label": "Naming & Voice", "body": "Optional: name exploration and a clear tone-of-voice." },
-          { "key": "identity", "label": "Identity System", "body": "Logo, typography, color, grid, and motion principles." },
-          { "key": "collateral", "label": "Collateral & Print", "body": "Brochures, one-pagers, stationery, and packaging basics." },
-          { "key": "web", "label": "Web & Design System", "body": "UI kit, components, and a fast Next.js site." },
-          { "key": "launch", "label": "Launch & Growth", "body": "Guidelines, rollout, analytics, and iteration." }
-        ]
+  "grids": {
+    "aria": "Capabilities & Highlights",
+    "sectionTitle": "How we build brand value",
+    "headerPills": "Expelore",
+    "count": 8,
+    "steps": [
+      {
+        "key": "discovery",
+        "title": "Discovery",
+        "desc": "Audit goals, market, and audience to align scope.",
+        "img": "https://s31.uupload.ir/files/razazanofficial/1.jpg"
       },
+      {
+        "key": "strategy",
+        "title": "Strategy",
+        "desc": "Positioning, value proposition, and messaging architecture.",
+        "img": "https://s31.uupload.ir/files/razazanofficial/2.jpg"
+      },
+      {
+        "key": "namingVoice",
+        "title": "Naming & Voice",
+        "desc": "Optional: name exploration and a clear tone-of-voice.",
+        "img": "https://s31.uupload.ir/files/razazanofficial/3.jpg"
+      },
+      {
+        "key": "identity",
+        "title": "Identity System",
+        "desc": "Logo, typography, color, grid, and motion principles.",
+        "img": "https://s31.uupload.ir/files/razazanofficial/4.webp"
+      },
+      {
+        "key": "collateral",
+        "title": "Collateral & Print",
+        "desc": "Brochures, one-pagers, stationery, and packaging basics.",
+        "img": "https://s31.uupload.ir/files/razazanofficial/5.jpg"
+      },
+      {
+        "key": "web",
+        "title": "Web & Design System",
+        "desc": "UI kit, components, and a fast Next.js site.",
+        "img": "https://s31.uupload.ir/files/razazanofficial/6.jpg"
+      },
+      {
+        "key": "launch",
+        "title": "Launch & Growth",
+        "desc": "Guidelines, rollout, analytics, and iteration.",
+        "img": "https://s31.uupload.ir/files/razazanofficial/7.jpg"
+      },
+      {
+        "key": "launchy",
+        "title": "Launch & Growth",
+        "desc": "Guidelines, rollout, analytics, and iteration.",
+        "img": "https://s31.uupload.ir/files/razazanofficial/8.jpg"
+      }
+    ]
+  },
       "trusts": {
         "text": "Trusted by ambitious startups & bold brands",
         "items": ["Artemis", "Nova", "Helix", "Vertex", "Zephyr", "Orbit", "Nimbus", "Pulse"],

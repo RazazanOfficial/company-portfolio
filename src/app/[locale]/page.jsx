@@ -22,9 +22,7 @@ import FeatureBento from "@/components/FeatureBento";
 
 export default function Page() {
   const locale = useLocale();
-  const h = useTranslations("Header");
   const t = useTranslations("HomePage");
-  const f = useTranslations("footer")
   const messages = useMessages();
 
   // ---------- TRUST (مارکی) ----------
@@ -160,7 +158,7 @@ export default function Page() {
       {/* TRUST MARQUEE */}
       <section className="relative z-10 py-10">
         <div className="max-w-6xl mx-auto px-4">
-          <div className="rounded-2xl border  glass p-4">
+          <div className="rounded-2xl border hover:border-blue-200/80 hover:scale-[1.01] transition duration-200 group-hover/bento:translate-x-1  glass p-4">
             <p className="text-center text-sm text-text-muted mb-4">
               {t("sections.trusts.text")}
             </p>
@@ -171,7 +169,7 @@ export default function Page() {
                   itemsToShow.map((name, i) => (
                     <span
                       key={`${dupIdx}-${i}-${name}`}
-                      className="border border-white rounded-2xl hover:bg-gray-800/80 text-[13px] px-4 py-2 inline-flex items-center gap-2"
+                      className="border border-white hover:border-blue-200/80 rounded-2xl hover:bg-gray-800/80 text-[13px] px-4 py-2 inline-flex items-center gap-2"
                     >
                       <Users2 className="h-4 w-4 opacity-80" /> {name}
                     </span>
@@ -412,29 +410,6 @@ export default function Page() {
           </div>
         </div>
       </section>
-
-      {/* FOOTER */}
-      <footer className="relative z-10 py-10">
-        <div className="max-w-6xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-[var(--color-border)] pt-6">
-          <span className="text-sm text-text-muted">
-            © {new Date().getFullYear()} — {f("rights")}
-          </span>
-          <nav className="flex flex-wrap items-center gap-3 text-sm">
-            <Link href={`/${locale}`} className="hover:underline">
-              {h("HomePage")}
-            </Link>
-            <Link href={`/${locale}/gallery`} className="hover:underline">
-              {h("Gallery")}
-            </Link>
-            <Link href={`/${locale}/about`} className="hover:underline">
-              {h("AboutUs")}
-            </Link>
-            <Link href={`/${locale}/contact`} className="hover:underline">
-              {h("ContactUs")}
-            </Link>
-          </nav>
-        </div>
-      </footer>
     </>
   );
 }

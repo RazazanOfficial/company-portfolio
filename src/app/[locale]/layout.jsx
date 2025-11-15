@@ -5,6 +5,7 @@ import { getMessages } from "next-intl/server";
 import { sora, vazir } from "./fonts";
 import LoadingOverlay from "@/components/LoadingOverlay";
 import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 
 const LOCALES = ["en", "fa"];
 export function generateStaticParams() {
@@ -56,6 +57,7 @@ export default async function LocaleLayout({ children, params: { locale } }) {
           <main id="app-root" aria-busy="false" className="relative z-0">
             {children}
           </main>
+          <Footer/>
           </section>
         </NextIntlClientProvider>
       </body>
