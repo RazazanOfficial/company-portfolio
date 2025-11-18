@@ -81,11 +81,20 @@
 }
 
 /* ====== Base ====== */
-*{
-  transition: background-color .35s ease,
-              color .35s ease,
-              border-color .35s ease;
+/* ====== Gallery fades & lightbox ====== */
+
+.fade-image {
+  transition: opacity 0.45s ease-in-out;
 }
+
+.fade-overlay {
+  transition: opacity 0.3s ease-in-out, background-color 0.3s ease-in-out;
+}
+
+.fade-image-main {
+  transition: opacity 0.4s ease-in-out, transform 0.35s ease-out;
+}
+
 html, body {
   width:100%;
   max-width:100%;
@@ -200,6 +209,77 @@ body {
       rgba(0,0,0,0) 68%
     );
 }
+
+/* ====== Gallery backgrounds ====== */
+
+.gallery-shell {
+  position: relative;
+  min-height: 100vh;
+  background: var(--bg);
+  overflow: hidden;
+  isolation: isolate;
+}
+
+/* گرید خیلی ظریف + کمی نور از بالا برای صفحه گالری */
+.gallery-shell::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.16;
+  background-image:
+    linear-gradient(
+      -90deg,
+      transparent calc(var(--grid-gap) - 1px),
+      var(--grid-line) calc(var(--grid-gap) - 1px + 1px),
+      var(--grid-line) var(--grid-gap)
+    ),
+    linear-gradient(
+      0deg,
+      transparent calc(var(--grid-gap) - 1px),
+      var(--grid-line) calc(var(--grid-gap) - 1px + 1px),
+      var(--grid-line) var(--grid-gap)
+    );
+  background-size: var(--grid-gap) var(--grid-gap);
+  z-index: -2;
+}
+
+/* هاله نور نرم برای جدا کردن محتوا از بک‌گراند */
+.gallery-shell::after {
+  content: "";
+  position: fixed;
+  inset: -20%;
+  pointer-events: none;
+  z-index: -1;
+  background:
+    radial-gradient(
+      circle at top,
+      rgba(127, 179, 255, 0.20),
+      transparent 55%
+    ),
+    radial-gradient(
+      circle at bottom,
+      rgba(0, 0, 0, 0.85),
+      transparent 70%
+    );
+  mix-blend-mode: screen;
+}
+
+/* نسخه‌ی کمی متمرکزتر برای صفحه‌ی کتگوری */
+.gallery-shell--detail::after {
+  background:
+    radial-gradient(
+      circle at 50% 10%,
+      rgba(140, 120, 255, 0.22),
+      transparent 55%
+    ),
+    radial-gradient(
+      circle at 50% 90%,
+      rgba(0, 0, 0, 0.9),
+      transparent 65%
+    );
+}
+
 
 /* ====== Background Gradient Animation (Tailwind v4 @theme inline) ====== */
 @theme inline {

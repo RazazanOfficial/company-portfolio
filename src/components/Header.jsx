@@ -26,7 +26,7 @@ export default function Header() {
   return (
     <>
       {/* نسخه‌ی دسکتاپ و تبلت */}
-      <header className="hidden sm:flex relative z-20 items-center sm:justify-evenly justify-center md:px-4 gap-5 sm:gap-0 md:gap-3">
+      <header className="hidden sm:flex relative items-center sm:justify-evenly justify-center md:px-4 gap-5 sm:gap-0 md:gap-3">
         <LanguageToggle />
         <nav className="rounded-full border border-brand-800/50 glass">
           <ul className="flex gap-1.5 py-1.5 px-1.5">

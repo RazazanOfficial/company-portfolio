@@ -90,26 +90,6 @@ export default function Page() {
     faqCount
   );
 
-  // --- Small building blocks ---
-  const GridSlot = ({ children, className = "" }) => {
-    return (
-      <div
-        className={`relative flex flex-1 h-full min-h-[6rem] w-full rounded-xl overflow-hidden ${className}`}
-      >
-        <div
-          className="absolute inset-0"
-          style={{
-            background:
-              "linear-gradient(-45deg, rgba(127,179,255,.18), rgba(140,120,255,.12), transparent)",
-          }}
-        />
-        <div className="relative flex w-full h-full items-center justify-center p-3">
-          {children}
-        </div>
-      </div>
-    );
-  };
-
   const onScrollDown = () => {
     const el = document.getElementById("below-hero");
     if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
